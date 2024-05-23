@@ -2,7 +2,7 @@ import {ContactAboutText, StyledContactSection} from "@/styles/styledContacts";
 import {FaPersonCircleQuestion} from "react-icons/fa6";
 import {fadeLeft} from "@/styles/styledAnimations";
 import {motion} from "framer-motion";
-import HeaderTitle from "@/components/HeaderTitle";
+import HeaderTitle from "@/components/ui/HeaderTitle";
 
 export default function ContactAbout() {
     return (<>

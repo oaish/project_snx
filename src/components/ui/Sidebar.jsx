@@ -1,10 +1,10 @@
 "use client"
 
 import React, {useEffect, useRef, useState} from "react";
-import * as NLS from "../styles/styledNav";
+import * as NLS from "../../styles/styledNav";
 import {StyledLink, StyledNotLink} from "@/styles/styledNav";
 import {NavLinksBottom, NavLinksTop, NavLinksTopMiddle} from "@/lib/objNav";
-import "../styles/nav.css";
+import "../../styles/nav.css";
 import "driver.js/dist/driver.css";
 import {accountDriver, contactDriver, createDesignerDriver, createDriver, navDriver} from "@/lib/driver";
 import {usePathname, useRouter} from "next/navigation";
@@ -15,7 +15,7 @@ import {showToast} from "@/lib/helper";
 import {FaMoon, FaSun} from "react-icons/fa";
 
 
-const Nav = () => {
+const Sidebar = () => {
 	const pathname = usePathname();
 	const router = useRouter();
 
@@ -205,4 +205,4 @@ const Nav = () => {
 	);
 };
 
-export default Nav;
+export default Sidebar;

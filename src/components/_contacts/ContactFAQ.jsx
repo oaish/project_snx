@@ -3,7 +3,7 @@ import {FaClipboardQuestion} from "react-icons/fa6";
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import {contactAccordionItems} from "@/lib/objContact";
 import {fadeDown, fadeLeft} from "@/styles/styledAnimations";
-import HeaderTitle from "@/components/HeaderTitle";
+import HeaderTitle from "@/components/ui/HeaderTitle";
 
 export default function ContactFAQ() {
     return (<>

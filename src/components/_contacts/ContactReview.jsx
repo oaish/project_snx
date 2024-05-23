@@ -4,8 +4,8 @@ import {useRef} from "react";
 import {Toast} from "primereact/toast";
 import {showToast} from "@/lib/helper";
 import {fadeLeft} from "@/styles/styledAnimations";
-import HeaderTitle from "@/components/HeaderTitle";
-import HeaderSub from "@/components/HeaderSub";
+import HeaderTitle from "@/components/ui/HeaderTitle";
+import HeaderSub from "@/components/ui/HeaderSub";
 
 export default function ContactReview() {
     const emailRegex = /^[a-zA-Z0-9_+.]+@[a-zA-Z]+\.+[a-z]{2,}$/;

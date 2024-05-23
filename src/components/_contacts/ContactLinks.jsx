@@ -9,7 +9,7 @@ import {ObjContact} from "@/lib/objContact";
 import Link from "next/link";
 import {FaLink, FaMailBulk} from "react-icons/fa";
 import {fadeLeft} from "@/styles/styledAnimations";
-import HeaderTitle from "@/components/HeaderTitle";
+import HeaderTitle from "@/components/ui/HeaderTitle";
 
 export default function ContactLinks() {
     return (

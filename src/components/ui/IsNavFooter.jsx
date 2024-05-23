@@ -1,11 +1,12 @@
 "use client"
 
 import React, {useEffect} from 'react'
-import Nav from "@/components/Nav";
+import Nav from "@/components/ui/Sidebar";
 import {usePathname} from "next/navigation";
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/Footer";
 import {NextUIProvider} from "@nextui-org/react";
 import useAppStore from "@/states/appState";
+import Sidebar from "@/components/ui/Sidebar";
 
 const IsNavFooter = ({children}) => {
 	const pathname = usePathname();
@@ -33,7 +34,7 @@ const IsNavFooter = ({children}) => {
 
 	return (
 		<>
-			{!isLoginPage && <Nav/>}
+			{!isLoginPage && <Sidebar/>}
 			<NextUIProvider>
 				{children}
 				{!isLoginPage && !isCreatePage && <Footer/>}

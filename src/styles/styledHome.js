@@ -4,17 +4,15 @@ import {motion} from "framer-motion";
 
 export const StyledSection = styled.section`
     background-color: var(--primary-color-black);
-    padding: 1rem 5rem;
     margin-left: 2rem;
 
-    @media (min-width: 768px) {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+    @media (max-width: 768px) {
+	    margin-left: 0;
+        padding: 4rem 1.15rem 3rem;
     }
 
     @media (min-width: 1024px) {
-        padding-top: 8rem;
-        padding-bottom: 8rem;
+        padding: 7.5rem 5rem;
     }
 `;
 
@@ -52,23 +50,26 @@ export const StyledTitle = styled(motion.h1)`
     letter-spacing: -0.025em;
     line-height: 1.2;
 
-    @media (min-width: 640px) {
-        font-size: 2.25rem;
-    }
-
-    @media (min-width: 768px) {
-        font-size: 3rem;
+    @media (max-width: 768px) {
+        justify-content: center;
+        flex-direction: column;
+        > svg {
+            width: 5rem;
+            height: 5rem;
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
     }
 
     @media (min-width: 1024px) {
         font-size: 4rem;
+        > svg {
+            height: 5rem;
+            width: 5rem;
+            margin-right: 2rem;
+        }
     }
 
-    > svg {
-        height: 5rem;
-        width: 5rem;
-        margin-right: 2rem;
-    }
 `;
 
 export const StyledParagraph = styled(motion.p)`
@@ -76,8 +77,8 @@ export const StyledParagraph = styled(motion.p)`
     margin-bottom: 1rem;
     color: var(--primary-text-color);
 
-    @media (min-width: 640px) {
-        font-size: 1.125rem;
+    @media (max-width: 768px) {
+	    text-align: justify;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -93,8 +94,9 @@ export const StyledGridContainer = styled(motion.div)`
     gap: 1rem;
     width: 100%;
 
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 768px) {
+        padding-left: 0;
+        grid-template-columns: repeat(1, 1fr);
     }
 
     @media (min-width: 1024px) {
@@ -106,21 +108,37 @@ export const StyledGridContainerAccesories = styled(motion.div)`
     display: grid;
     grid-template-columns: 1fr;
     gap: 50px;
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(4, 1fr);
-    }
 
-    > a > div > svg {
-        margin: 2rem;
-        width: 10rem;
-        height: 10rem;
-        transition: 0.25s all linear;
-        color: var(--primary-text-color);
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        > a > div > svg {
+            width: 5rem;
+            height: 5rem;
+            transition: 0.25s all linear;
+            color: var(--primary-text-color);
 
-        &:hover {
-            color: var(--primary-theme-color);
+            &:hover {
+                color: var(--primary-theme-color);
+            }
         }
     }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+        > a > div > svg {
+            margin: 2rem;
+            width: 10rem;
+            height: 10rem;
+            transition: 0.25s all linear;
+            color: var(--primary-text-color);
+
+            &:hover {
+                color: var(--primary-theme-color);
+            }
+        }
+    }
+
+
 `;
 
 export const StyledGridItem = styled(motion.div)`
@@ -130,19 +148,31 @@ export const StyledGridItem = styled(motion.div)`
     transition: 0.25s all linear;
     box-shadow: var(--primary-theme-color) 5px 5px;
 
-    > svg {
-        margin-bottom: 1rem;
-        width: 3.5rem;
-        height: 3.5rem;
-        color: var(--primary-text-color);
+    @media (max-width: 768px) {
+        > svg {
+            margin-bottom: 1rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            color: var(--primary-text-color);
+        }
     }
+
+    @media (min-width: 1024px) {
+        > svg {
+            margin-bottom: 1rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            color: var(--primary-text-color);
+        }
+    }
+
 `;
 
 export const StyledGridTitle = styled.h3`
     font-size: 1.125rem;
     font-weight: 600;
     color: var(--primary-text-color);
-
+	
 `;
 
 export const StyledGridBlock = styled(motion.div)`
@@ -214,7 +244,13 @@ export const StyledUserFlex = styled(motion.div)`
 
 export const StyledCarousel = styled(motion.div)`
     padding-top: 2rem;
-    margin-left: 3rem;
+
+    @media (max-width: 768px) {
+    }
+
+    @media (min-width: 1024px) {
+        margin-left: 3rem;
+    }
 
     > div > div > div > button {
         color: var(--primary-text-color);
