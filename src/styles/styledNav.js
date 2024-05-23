@@ -13,6 +13,7 @@ export const NavContainer = styled(motion.div)`
     position: fixed;
     z-index: 10000;
 
+
     &:hover {
         box-shadow: 5px 0 75px rgba(0, 128, 128, 0.3);
     }
@@ -23,21 +24,31 @@ export const NavContainer = styled(motion.div)`
 `;
 
 export const NavSubContainer = styled(motion.div)`
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: var(--primary-color-black);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--primary-color-black);
 
-    > .navLinksTop {
-        border-bottom: 4px solid var(--primary-theme-color);
-        background-color: var(--primary-comp-bg);
-    }
+  > .navLinksTop {
+    border-bottom: 4px solid var(--primary-theme-color);
+    background-color: var(--primary-comp-bg);
+  }
 
-    > .navLinksBottom {
-        margin-top: auto;
-        border-top: 4px solid var(--primary-theme-color);
-        background-color: var(--primary-comp-bg);
+  > .navLinksBottom {
+    margin-top: auto;
+    border-top: 4px solid var(--primary-theme-color);
+    background-color: var(--primary-comp-bg);
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 23px;
+      height: 23px;
     }
+  }
 `;
 
 export const NavSubRight = styled(motion.div)`
@@ -91,6 +102,10 @@ export const NavStyledIcon = styled(motion.p)`
   padding-right: 0.75rem;
   padding-left: 0.50rem;
   align-self: center;
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 export const StyledNotLink = styled(motion.div)`

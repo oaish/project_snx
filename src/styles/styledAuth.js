@@ -10,7 +10,7 @@ export const AuthCanvas = styled(Canvas)`
 export const LoginPageDiv = styled.div`
   background-color: #2c2c2c;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   overflow:hidden;
   color: var(--primary-theme-color);
 `;
@@ -76,6 +76,9 @@ export const LoginFormDiv = styled.div`
   top: 5rem;
 
   @media (max-width: 768px) {
+    //position: fixed;
+    //top: 50%;
+    //translate: 0 -50%;
     width: 90vw;
     left: 5vw;
     padding: 3rem 2.2rem;
@@ -120,6 +123,7 @@ export const SubDiv = styled.form`
     @media (max-width: 768px) {
       width: 100%;
       margin-left: 0;
+      margin-top: 0.75rem;
     }
   }
 `;

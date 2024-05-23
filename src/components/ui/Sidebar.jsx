@@ -25,14 +25,6 @@ const Sidebar = () => {
 
 	const {user, setUser} = useAppStore();
 
-	const handleLogin = () => {
-		router.push('/auth');
-	};
-
-	const handleSignUp = () => {
-		router.push('/auth')
-	};
-
 	const fetchUserData = async () => {
 		try {
 			const email = document.cookie.split(';')[0].split('=')[1]
@@ -65,36 +57,9 @@ const Sidebar = () => {
 		}
 	};
 
-
 	useEffect(() => {
 		fetchUserData().then();
 	}, []);
-
-	const deleteUser = async () => {
-		try {
-			if (!user || !user._id) {
-				return;
-			}
-
-			const options = {
-				method: "POST",
-				body: JSON.stringify({
-					deleteUserID: {userId: user._id}
-				}),
-				headers: {
-					"Content-Type": "application/json",
-				}
-			};
-
-			const res = await fetch("/api/post/delete-user", options);
-			const data = await res.json();
-
-			router.push("/auth");
-
-		} catch (error) {
-			console.error("Error deleting user:", error);
-		}
-	}
 
 
 	const handleDriverStart = () => {

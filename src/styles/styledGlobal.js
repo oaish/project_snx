@@ -11,7 +11,11 @@ export const PageContainer = styled(motion.div)`
   @media (max-width: 768px) {
     margin-left: 0;
     width: 100vw;
+    height: calc(100dvh - 4rem);
+    overflow: hidden;
     padding-left: 0 !important;
+    padding-top: 1rem;
+    margin-top: 4rem;
   }
 `;
 
@@ -26,7 +30,11 @@ export const CreatePageContainer = styled(motion.div)`
   @media (max-width: 768px) {
     margin-left: 0;
     width: 100vw;
+    height: Calc(100vh - 5rem);
+    justify-content: flex-start;
     flex-direction: column;
+    margin-top: 5rem;
+    padding-top: 1.5rem;
   }
 `;
 

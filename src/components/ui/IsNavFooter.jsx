@@ -7,12 +7,15 @@ import Footer from "@/components/ui/Footer";
 import {NextUIProvider} from "@nextui-org/react";
 import useAppStore from "@/states/appState";
 import Sidebar from "@/components/ui/Sidebar";
+import useMobileDetect from "@/components/UseMobileDetect";
+import MobileNavBar from "@/components/ui/MobileNavBar";
 
 const IsNavFooter = ({children}) => {
 	const pathname = usePathname();
 	const isLoginPage = pathname.includes("/auth");
 	const isCreatePage = pathname.includes("/create")
 
+	const {isMobile} = useMobileDetect()
 	const {setUser} = useAppStore();
 
 	useEffect(() => {
@@ -35,6 +38,7 @@ const IsNavFooter = ({children}) => {
 	return (
 		<>
 			{!isLoginPage && <Sidebar/>}
+			{(isMobile() && !isLoginPage) && <MobileNavBar/>}
 			<NextUIProvider>
 				{children}
 				{!isLoginPage && !isCreatePage && <Footer/>}

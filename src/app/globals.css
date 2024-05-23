@@ -245,3 +245,11 @@ button::-moz-focus-inner,
     -moz-outline-radius: revert !important;
     box-shadow: revert !important;
 }
+
+a:focus,
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+    outline: none !important;
+}

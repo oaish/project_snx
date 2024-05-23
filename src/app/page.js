@@ -8,8 +8,10 @@ import StyledProgressBar from "@/components/ui/StyledProgressBar";
 import HomeWorks from "@/components/home/HomeWorks";
 import HomeCategories from "@/components/home/HomeCategories";
 import HomeReviews from "@/components/home/HomeReviews";
+import UseMobileDetect from "@/components/UseMobileDetect";
 
 export default function Home() {
+	const {isMobile} = UseMobileDetect();
 
 	return (
 		<>
@@ -17,7 +19,7 @@ export default function Home() {
 				variants={fadeLeft}
 				initial="initial"
 				animate="show"
-				style={{width: "100vw"}}
+				style={{width: "100vw", marginTop: isMobile() ? "4rem" : "0"}}
 			>
 				<StyledProgressBar/>
 				<HomeTitle/>
