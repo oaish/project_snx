@@ -4,7 +4,7 @@ const initialDecalSize = 0.2;
 
 const useStore = create((set) => ({
 		animation: null,
-		backgroundColor: "#b0e0e6",
+		backgroundColor: "#008080",
 		backgroundImage: {
 			data: "", name: "", path: "", author: {name: "", link: ""},
 		},
@@ -27,7 +27,9 @@ const useStore = create((set) => ({
 		lights: true,
 		scale: 1,
 		sizeType: "size_M",
+		isPanelOpen: false,
 
+		setIsPanelOpen: (isPanelOpen) => set((state) => ({...state, isPanelOpen})),
 		setScale: (scale) => set((state) => ({...state, scale})),
 		setSizeType: (type) => set((state) => ({...state, sizeType: type})),
 		setLights: (lights) => set((state) => ({...state, lights})),
@@ -65,7 +67,7 @@ export default useStore;
 
 const initialValues = {
 	animation: null,
-	backgroundColor: "#b0e0e6",
+	backgroundColor: "#008080",
 	backgroundImage: {
 		data: null, name: null, path: null, author: {name: null, link: null},
 	},

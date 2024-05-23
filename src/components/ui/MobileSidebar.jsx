@@ -21,7 +21,7 @@ export const MobileSidebar = ({setSidebarOpen}) => {
     const [userData, setUserData] = useState([]);
     const toastRef = useRef(null);
 
-    const {user, setUser} = useAppStore();
+    const {isDarkMode, setDarkMode} = useAppStore();
 
     const fetchUserData = async () => {
         try {
@@ -60,14 +60,13 @@ export const MobileSidebar = ({setSidebarOpen}) => {
     }, []);
 
 
-    const [isDarkTheme, setIsDarkTheme] = useState(true);
 
     const handleThemeToggle = () => {
-        setIsDarkTheme(!isDarkTheme);
-        document.documentElement.style.setProperty('--primary-color-black', isDarkTheme ? '#e0ffff' : '#1d1d1d');
-        document.documentElement.style.setProperty('--primary-text-color', isDarkTheme ? '#1d1d1d' : '#008080');
-        document.documentElement.style.setProperty('--primary-comp-bg', isDarkTheme ? '#b0e0e6' : '#2c2c2c');
-        document.documentElement.style.setProperty('--dropdown-text', isDarkTheme ? '#008080' : '#000');
+        setDarkMode(!isDarkMode);
+        document.documentElement.style.setProperty('--primary-color-black', isDarkMode ? '#e0ffff' : '#1d1d1d');
+        document.documentElement.style.setProperty('--primary-text-color', isDarkMode ? '#1d1d1d' : '#008080');
+        document.documentElement.style.setProperty('--primary-comp-bg', isDarkMode ? '#b0e0e6' : '#2c2c2c');
+        document.documentElement.style.setProperty('--dropdown-text', isDarkMode ? '#008080' : '#000');
     };
 
     return (
@@ -89,8 +88,8 @@ export const MobileSidebar = ({setSidebarOpen}) => {
                         ))}
                         <NLS.NavStyledLi className="middle-links">
                             <StyledNotLink id="theme-link" onClick={() => handleThemeToggle()}>
-                                <NLS.NavStyledIcon onClick={() => setIsDarkTheme(!isDarkTheme)}>
-                                    {isDarkTheme ? <FaSun/> : <FaMoon/>}
+                                <NLS.NavStyledIcon onClick={() => setDarkMode(!isDarkMode)}>
+                                    {isDarkMode ? <FaSun/> : <FaMoon/>}
                                 </NLS.NavStyledIcon>
                             </StyledNotLink>
                         </NLS.NavStyledLi>

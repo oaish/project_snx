@@ -8,7 +8,14 @@ import CanvasBackground from "./canvasBackground/CanvasBackground"
 import DecalHelper from "./DecalHelper"
 import ShirtModel from "./ShirtModel"
 import Scenes from "./Scenes"
-import {CreateCanvasWrapper, LoadingOverlay, SavingScreen, SavePopup, SavePopupFooter} from "@/styles/styledCreate";
+import {
+    CreateCanvasWrapper,
+    LoadingOverlay,
+    SavingScreen,
+    SavePopup,
+    SavePopupFooter,
+    PanelButton
+} from "@/styles/styledCreate";
 import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
 import {Button} from "primereact/button";
 import {SplitButton} from "primereact/splitbutton";
@@ -25,6 +32,7 @@ import {process_image} from "@/lib/imageUtils";
 import {createDecal} from "@/components/three/Decals";
 import {Loader} from "@react-three/drei";
 import CapModel from "@/components/three/CapModel";
+import useMobileDetect from "@/components/UseMobileDetect";
 
 const Viewer = ({mode, DD, modelUrl}) => {
     const [modelRayData, setModelRayData] = useState(null)
@@ -64,6 +72,8 @@ const Viewer = ({mode, DD, modelUrl}) => {
         setLoading,
         setDecals,
         setDecalImages,
+        isPanelOpen,
+        setIsPanelOpen,
         setGl,
         scale,
         sizeType,
@@ -306,6 +316,8 @@ const Viewer = ({mode, DD, modelUrl}) => {
         </div>
     </SavePopupFooter>);
 
+    const {isMobile} = useMobileDetect()
+
     return (
         <CanvasBackground>
             {loading && (<>
@@ -316,7 +328,7 @@ const Viewer = ({mode, DD, modelUrl}) => {
                     </div>
                 </SavingScreen>
             </>)}
-            <Hotkeys/>
+            <Hotkeys onClick={setAzimuthPose} />
             <Toast ref={toastRef}/>
             <ConfirmPopup/>
             <Dialog visible={dialogVisible} modal header={"Save Model"} footer={footerContent}
@@ -335,18 +347,24 @@ const Viewer = ({mode, DD, modelUrl}) => {
                     </div>
                 </SavePopup>
             </Dialog>
+            {
+                isMobile() && (
+                    <PanelButton onClick={() => setIsPanelOpen(!isPanelOpen)}></PanelButton>
+                )
+            }
+
             <div className="export-glb-div">
                 <a href="" ref={link}></a>
-                <Button id="save-button" label={"Save" + (saved.state ? "" : "*")} icon={"pi pi-save"}
-                        onClick={handleSaveBtnClick} raised>
-                </Button>
-                <SplitButton id="export-container" label={"Export"} icon={"pi pi-file-export"} model={items}
+                <SplitButton id="export-container" label={(isMobile() ? "" : "Export")} icon={"pi pi-file-export"} model={items}
                              onClick={async () => {
                              }} raised/>
-                <Button id="reset-button" label={"Reset"} icon={"pi pi-eraser"} onClick={handleReset} raised/>
+                <Button id="save-button" label={(isMobile() ? "" : "Save") + (saved.state ? "" : "*")} icon={"pi pi-save"}
+                        onClick={handleSaveBtnClick} raised>
+                </Button>
+                <Button id="reset-button" label={(isMobile() ? "" : "Reset")} icon={"pi pi-eraser"} onClick={handleReset} raised/>
             </div>
             <CreateCanvasWrapper
-                camera={{position: [0, 0, 2.2], fov: 50}}
+                camera={{position: [0, 0, 2.2], fov: isMobile() ? 70 : 50}}
                 dpr={dpr}
                 frameloop="demand"
                 gl={{preserveDrawingBuffer: true}}

@@ -7,6 +7,7 @@ import useStore from "../../states/modelState"
 import Decals, {createDecal} from "./Decals"
 import useDecalStore from "@/states/decalState";
 import {process_image} from "@/lib/imageUtils";
+import useMobileDetect from "@/components/UseMobileDetect";
 
 const ShirtModel = ({modelRef, groupRef, url, rotation, setModelRayData}) => {
 
@@ -114,21 +115,25 @@ const ShirtModel = ({modelRef, groupRef, url, rotation, setModelRayData}) => {
     // RESET RAYCAST POS AND NORMAL
     const removeRaycast = () => setModelRayData(null)
 
-    return (<a.group ref={groupRef} rotation={rotation} castShadow scale={scale}>
-        <mesh
-            ref={modelRef}
-            onPointerMove={passRaycast}
-            onPointerOut={removeRaycast}
-            onPointerDown={handleDecal}
-            geometry={gltf.scene.children[0].geometry}
-            castShadow
-        >
-            <meshStandardMaterial
-                color={modelColor}
-            />
-        </mesh>
-        <Decals decals={decals}/>
-    </a.group>)
+    const {isMobile} = useMobileDetect()
+
+    return (
+        <a.group ref={groupRef} rotation={rotation} castShadow scale={scale} position-x={isMobile() ? -0.01 : 0}>
+            <mesh
+                ref={modelRef}
+                onPointerMove={passRaycast}
+                onPointerOut={removeRaycast}
+                onPointerDown={handleDecal}
+                geometry={gltf.scene.children[0].geometry}
+                castShadow
+            >
+                <meshStandardMaterial
+                    color={modelColor}
+                />
+            </mesh>
+            <Decals decals={decals}/>
+        </a.group>
+    )
 }
 
 export default ShirtModel

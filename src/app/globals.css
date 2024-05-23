@@ -246,6 +246,21 @@ button::-moz-focus-inner,
     box-shadow: revert !important;
 }
 
+
+@media (max-width: 768px) {
+    .p-splitbutton-defaultbutton.p-button.p-component.p-button-icon-only.p-button-raised {
+        padding-right: 0 !important;
+    }
+
+    .export-glb-div {
+        bottom: 20px;
+        right: 0;
+        left: 50%;
+        translate: -50%;
+        gap: 10px;
+    }
+}
+
 a:focus,
 input:focus,
 button:focus,

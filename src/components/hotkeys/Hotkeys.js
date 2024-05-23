@@ -3,12 +3,15 @@ import IconWithText from "../iconWithText/IconWithText"
 import useStore from "@/states/modelState"
 import s from "./hotkeys.module.css"
 import styled from "styled-components";
+import useMobileDetect from "@/components/UseMobileDetect";
 
-const Hotkeys = () => {
+const Hotkeys = ({onClick}) => {
     const {decalPath, animation} = useStore()
+    const {isMobile} = useMobileDetect()
+    const width = isMobile() ? "50px" : (decalPath ? "200px" : "120px")
     return (
-        <StyledKeysContainer className={s.wrapper} style={{width: decalPath ? "200px" : "120px", display: (!decalPath && animation) ? "none" : null}}>
-            {decalPath && (
+        <StyledKeysContainer className={s.wrapper} style={{width: width, display: (!decalPath && animation) ? "none" : null, padding: '5px 5px', margin: '20px'}}>
+            {(decalPath && !isMobile()) && (
                 <>
                     <div className={s.inner}>
                         <>
@@ -37,7 +40,8 @@ const Hotkeys = () => {
                     <IconWithText
                         imgSrc={'/keys/keyR.svg'}
                         imgAlt="rotate"
-                        textContent="Rotate"
+                        textContent={!isMobile() && "Rotate"}
+                        onClick={() => onClick(prev => prev + 90)}
                     />
                 </div>
             )}

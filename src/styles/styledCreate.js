@@ -181,3 +181,32 @@ export const SavePopupFooter = styled.div`
         outline: none !important;
     }
 `;
+
+export const PanelButton = styled.div`
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  z-index: 5000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  padding: 20px;
+  border-radius: 10px;
+  background-size: 40px;
+  background-position: center;
+  transition: scale 0.2s ease;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 .5rem rgba(0,0,0,0.5); 
+  background-color: var(--primary-color-black);
+  background-image: url("https://freepngimg.com/icon/download/social_media/4100-google-bard.png");
+  
+  &:hover, &:focus, &:active {
+    scale: 1.1;
+  }
+`;
