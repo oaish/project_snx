@@ -58,8 +58,8 @@ export default function HomeReviews() {
 						<StyledParagraph
 							variants={scaleUp}
 						>
-							Hear from our satisfied customers who have created their unique outfits with our 3D
-							customizer.
+							Hear from our satisfied customers who have created their
+							unique outfits with our 3D customizer.
 						</StyledParagraph>
 
 					</StyledFlexContainer>
@@ -69,8 +69,12 @@ export default function HomeReviews() {
 					initial="initial"
 					animate="show"
 				>
-					<Carousel value={userReviews}
-					          itemTemplate={ReviewTemplate} numVisible={isMobile ? 3 : 1} numScroll={1}/>
+					<Carousel
+						value={userReviews}
+						itemTemplate={ReviewTemplate}
+						numVisible={isMobile ? 3 : 1}
+						numScroll={1}
+					/>
 				</StyledCarousel>
 			</StyledSection>
 		</>

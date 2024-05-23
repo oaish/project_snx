@@ -229,7 +229,7 @@ export const StyledBorderDiv = styled(motion.div)`
     border: 1px solid transparent;
     background-color: var(--primary-comp-bg);
     margin: 10px;
-    height: 10rem;
+    height: 10rem;	
     box-shadow: var(--primary-theme-color) 5px 5px;
     text-align: center;
     padding: 20px;
