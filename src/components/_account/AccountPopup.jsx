@@ -38,7 +38,7 @@ export default function AccountPopup({user, setProfile}) {
 			const res = await fetch("/api/post/user/delete", options);
 			const data = await res.json();
 
-			router.push("/auth");
+			// router.push("/auth");
 		} catch (error) {
 			console.error("Error deleting user:", error);
 		}

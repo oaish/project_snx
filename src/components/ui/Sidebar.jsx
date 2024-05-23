@@ -35,15 +35,15 @@ const Sidebar = () => {
 
 	const fetchUserData = async () => {
 		try {
-			if (user == null || !user._id) {
-				router.push("/auth")
-				return;
+			const email = document.cookie.split(';')[0].split('=')[1]
+			if (email === "false") {
+				throw new Error("User not found");
 			}
 
 			const options = {
 				method: "POST",
 				body: JSON.stringify({
-					email: user.email
+					email: email
 				}),
 				headers: {
 					"Content-Type": "application/json",
@@ -109,6 +109,10 @@ const Sidebar = () => {
 			case "/create/new/pant":
 			case "/create/new/shoes":
 			case "/create/new/cap":
+			case "/create/recent/shirt":
+			case "/create/recent/pant":
+			case "/create/recent/shoes":
+			case "/create/recent/cap":
 				createDesignerDriver();
 				break;
 			case "/contact":

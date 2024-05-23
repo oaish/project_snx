@@ -7,6 +7,12 @@ export const PageContainer = styled(motion.div)`
   padding: 1.5rem 2rem;
   margin-left: 5%;
   width: 100vw;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100vw;
+    padding-left: 0 !important;
+  }
 `;
 
 export const CreatePageContainer = styled(motion.div)`
@@ -17,6 +23,11 @@ export const CreatePageContainer = styled(motion.div)`
   align-items: center;
   width: Calc(100vw - 5rem);
   height: 100vh;
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100vw;
+    flex-direction: column;
+  }
 `;
 
 export const StyledHead = styled(motion.p)`

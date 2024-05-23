@@ -11,13 +11,20 @@ export const StyledContactSection = styled(motion.div)`
 export const ContactCardsContainer = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   gap: 20px;
   width: 90%;
   height: 15rem;
 
   > a {
     text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+    height: auto;
+    width: 100%;
   }
 `;
 
@@ -41,6 +48,14 @@ export const ContactCard = styled.button`
 
   &:hover {
     box-shadow: var(--primary-theme-color) 0 0 5px 3px;
+  }
+
+  @media (max-width: 768px) {
+    height: auto;
+    width: 90%;
+    margin: 5px auto;
+    justify-content: space-between;
+    padding-inline: 15px;
   }
 `;
 
@@ -83,57 +98,69 @@ export const ContactAboutText = styled(motion.p)`
   color: var(--primary-text-color);
   margin-left: 2rem;
   margin-top: 2rem;
+  
+  @media (max-width: 768px) {
+    margin-left: 0;
+    position: relative;
+    left: 50%;
+    translate: -50%;
+    text-align: justify;
+  }
 `;
 
 export const ContactAccordianContainer = styled(motion.div)`
-    padding: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    width: 94%;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 94%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+  
+  > div {
+    text-align: left;
 
     > div {
-        text-align: left;
+      width: 100%;
+      border-radius: 10px;
+      background-color: var(--primary-comp-bg);
 
-        > div {
-            width: 100%;
-            border-radius: 10px;
-            background-color: var(--primary-comp-bg);
+      > h2 {
+        width: auto;
+        background-color: var(--primary-comp-bg);
 
-            > h2 {
-                width: auto;
-                background-color: var(--primary-comp-bg);
+        > button {
+          font-size: 1.10rem;
+          display: flex;
+          background-color: var(--primary-comp-bg);
+          width: 100%;
 
-                > button {
-                    font-size: 1.10rem;
-                    display: flex;
-                    background-color: var(--primary-comp-bg);
-                    width: 100%;
+          &:hover {
+            cursor: pointer;
+          }
 
-                    &:hover {
-                        cursor: pointer;
-                    }
+          > div > span {
+            color: var(--primary-text-color);
 
-                    > div > span {
-                        color: var(--primary-text-color);
+          }
 
-                    }
-
-                    > span {
-                        margin-left: auto;
-                        color: var(--primary-theme-color);
-                    }
-                }
-            }
-
-            > section > div {
-                color: var(--primary-text-color);
-            }
-
-            > section {
-                color: var(--primary-color-black);
-            }
+          > span {
+            margin-left: auto;
+            color: var(--primary-theme-color);
+          }
         }
+      }
+
+      > section > div {
+        color: var(--primary-text-color);
+      }
+
+      > section {
+        color: var(--primary-color-black);
+      }
     }
+  }
 `;
 
 export const ContactInputContainer = styled(motion.div)`
@@ -168,6 +195,10 @@ export const ContactButton = styled(motion.button)`
     cursor: pointer;
     background-color: var(--primary-theme-color);
   }
+  
+  @media (max-width: 768px) {
+    margin-left: 1rem;
+  }
 `;
 
 export const ContactReviewInput = styled(InputTextarea)`
@@ -182,5 +213,10 @@ export const ContactReviewInput = styled(InputTextarea)`
   &:focus {
     outline: none;
     box-shadow: var(--primary-theme-color) 3px 3px;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 1rem;
+    width: 43%;
   }
 `;

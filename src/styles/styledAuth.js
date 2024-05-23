@@ -29,6 +29,13 @@ export const LoginFormDiv = styled.div`
     margin-top: 2rem;
     margin-left: 6.5rem;
 
+    @media (max-width: 768px) {
+      margin-left: 0;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
     > div {
       border: solid var(--primary-theme-color) 3px;
       border-radius: 0;
@@ -36,6 +43,9 @@ export const LoginFormDiv = styled.div`
 
       > button {
         width: 7rem;
+        @media (max-width: 768px) {
+          width: 8rem;
+        }
 
         > span.bg-danger {
           background-color: var(--primary-theme-color);
@@ -64,6 +74,12 @@ export const LoginFormDiv = styled.div`
   position: absolute;
   left: 32%;
   top: 5rem;
+
+  @media (max-width: 768px) {
+    width: 90vw;
+    left: 5vw;
+    padding: 3rem 2.2rem;
+  }
 `;
 
 export const LoginModelDiv = styled.div`
@@ -100,6 +116,11 @@ export const SubDiv = styled.form`
     border-radius: 0;
     background-color: var(--primary-comp-bg);
     box-shadow: 3px 3px var(--primary-theme-color);
+    
+    @media (max-width: 768px) {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 `;
 

@@ -23,7 +23,8 @@ const StyledBar = styled(motion.div)`
     transform-origin: 0%;
     z-index: 100;
     @media (max-width: 768px) {
-        left: 0;
+        display: none;
+		left: 0;
 	    width: 100vw;
     }
 `;

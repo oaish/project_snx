@@ -14,8 +14,10 @@ import {
 import React from "react";
 import {userReviews} from "@/lib/objHome";
 import {Carousel} from 'primereact/carousel';
+import useMobileDetect from "@/components/UseMobileDetect";
 
 export default function HomeReviews() {
+    const {isMobile} = useMobileDetect();
     function ReviewTemplate(props) {
         let reviewerName = props.name;
         reviewerName = reviewerName.split(" ");
@@ -50,7 +52,7 @@ export default function HomeReviews() {
                     </StyledFlexContainer>
                 </StyledContainer>
                 <StyledCarousel>
-                    <Carousel value={userReviews} itemTemplate={ReviewTemplate} numVisible={3} numScroll={1}/>
+                    <Carousel value={userReviews} itemTemplate={ReviewTemplate} numVisible={isMobile() ? 1 : 3} numScroll={1}/>
                 </StyledCarousel>
             </StyledSection>
         </>

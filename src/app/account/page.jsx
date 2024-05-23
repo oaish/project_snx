@@ -126,7 +126,7 @@ export default function Page() {
             console.log(data);
             console.log("User deleted successfully.");
 
-            router.push("/auth");
+            // router.push("/auth");
 
         } catch (error) {
             console.error("Error deleting user:", error);
