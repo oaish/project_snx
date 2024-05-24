@@ -49,48 +49,54 @@ export default function MobileNavBar() {
 }
 
 const StyledNav = styled(motion.div)`
-  display: none;
+    display: none;
 
-  @media (max-width: 768px) {
-    position: fixed;
-    display: grid;
-    width: 100vw;
-    left: 0;
-    top: 0;
-    height: 4rem;
-    z-index: 100;
-    background: #1d1d1d;
-    grid-template-columns: 4rem 1fr 4rem;
-    border-bottom: 4px solid var(--primary-theme-color);
-  }
-
-  #project-link, #profile-link {
-    background: #2c2c2c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--primary-theme-color);
-
-    > svg {
-      width: 40%;
-      height: 40%;
+    @media (max-width: 768px) {
+        position: fixed;
+        display: grid;
+        width: 100vw;
+        left: 0;
+        top: 0;
+        height: 4rem;
+        z-index: 100;
+        background: #1d1d1d;
+        grid-template-columns: 4rem 1fr 4rem;
+        border-bottom: 4px solid var(--primary-theme-color);
     }
-  }
 
-  #project-link {
-    border-right: 4px solid var(--primary-theme-color);
-  }
+    #project-link, #profile-link {
+        background: #2c2c2c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--primary-theme-color);
 
-  #profile-link {
-    border-left: 4px solid var(--primary-theme-color);
-  }
+        > svg {
+            width: 40%;
+            height: 40%;
+            transition: 0.25s all linear;
+        }
 
-  .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-theme-color);
-  }
+        > svg:hover {
+            color: var(--primary-text-color);
+            cursor: pointer;
+        }
+    }
+
+    #project-link {
+        border-right: 4px solid var(--primary-theme-color);
+    }
+
+    #profile-link {
+        border-left: 4px solid var(--primary-theme-color);
+    }
+
+    .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary-theme-color);
+    }
 `;

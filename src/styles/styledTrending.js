@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 export const STrendingContainer = styled(motion.div)`
     width: 92%;
     margin-left: 1.80rem;
+
 `;
 
 export const STrendingCard = styled(motion.div)`
@@ -34,6 +35,14 @@ export const STrendingCard = styled(motion.div)`
 
         > img {
             transform: scale(1.25);
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 85%;
+        height: 75%;
+        > img {
+            transform: scale(0.75);
         }
     }
 `;

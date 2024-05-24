@@ -4,6 +4,7 @@ import {STrendingContainer} from "@/styles/styledTrending";
 import {fadeLeft} from "@/styles/styledAnimations";
 import HeaderType from "@/components/_trending/HeaderType";
 import TrendingCard from "@/components/_trending/TrendingCard";
+import {useMediaQuery} from "react-responsive";
 
 function CarouselCard(props) {
 	return (
@@ -18,11 +19,13 @@ function CarouselCard(props) {
 }
 
 function TrendingSection({headerContent, headerIcon, carouselData}) {
+	const isMobile = useMediaQuery({maxWidth: 768});
 	return (
 		<>
 			<HeaderType content={headerContent} icon={headerIcon} variants={fadeLeft} initial="initial" animate="show"/>
 			<STrendingContainer variants={fadeLeft} initial="initial" animate="show">
-				<Carousel circular autoplayInterval={2000} value={carouselData} numVisible={3} numScroll={1} itemTemplate={CarouselCard}/>
+				<Carousel numVisible={isMobile ? 3 : 1}  value={carouselData}
+				          numScroll={1} itemTemplate={CarouselCard}/>
 			</STrendingContainer>
 		</>
 	);

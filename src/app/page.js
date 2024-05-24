@@ -12,7 +12,6 @@ import UseMobileDetect from "@/components/UseMobileDetect";
 
 export default function Home() {
 	const {isMobile} = UseMobileDetect();
-
 	return (
 		<>
 			<motion.div
