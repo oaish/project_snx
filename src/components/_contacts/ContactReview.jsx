@@ -85,12 +85,10 @@ export default function ContactReview() {
                 animate="show"
             >
                 <HeaderSub
-                    variants={fadeLeft}
                     content={"First Name"}
                 />
                 <HeaderSub
                     className="l-name"
-                    variants={fadeLeft}
                     content={"Last Name:"}
                 />
             </ContactInputContainer>
@@ -100,15 +98,11 @@ export default function ContactReview() {
                 animate="show"
             >
                 <ContactReviewInput
-                    variants={fadeLeft}
-                    autoSize={false}
                     rows={1}
                     required={true}
                     ref={fNameRef}
                 />
                 <ContactReviewInput
-                    variants={fadeLeft}
-                    autoSize={false}
                     rows={1}
                     required={true}
                     ref={lNameRef}
@@ -120,7 +114,6 @@ export default function ContactReview() {
                 animate="show"
             >
                 <HeaderSub
-                    variants={fadeLeft}
                     content={"Email:"}
                 />
             </ContactInputContainer>
@@ -132,7 +125,6 @@ export default function ContactReview() {
                 <ContactReviewInput
                     id="big-input"
                     rows={1}
-                    autoSize={false}
                     required={true}
                     ref={emailRef}/>
             </ContactInputContainer>
@@ -142,7 +134,6 @@ export default function ContactReview() {
                 animate="show"
             >
                 <HeaderSub
-                    variants={fadeLeft}
                     content={"Feedback:"}
                 />
             </ContactInputContainer>
@@ -154,7 +145,6 @@ export default function ContactReview() {
                 <ContactReviewInput
                     id="big-input"
                     className="feedback-input"
-                    autoSize={false}
                     required={true}
                     ref={userRef}/>
             </ContactInputContainer>

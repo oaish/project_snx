@@ -8,19 +8,20 @@
     background: white;
 }
 
-.inner:active {
-    scale: 0.95;
-    transition: scale .2s ease;
+.inner {
+
+}
+
+.rotate {
+
 }
 
 @media (max-width: 768px) {
-    .inner, .inner div {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .rotate {
+        height: 60px !important;
     }
 
-
+    .rotate img, .rotate div {
+        height: 60px !important;
+    }
 }

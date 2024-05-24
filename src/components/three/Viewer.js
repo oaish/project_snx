@@ -1,4 +1,4 @@
-import {invalidate} from "@react-three/fiber"
+import {invalidate, useThree} from "@react-three/fiber"
 import React, {Suspense, useEffect, useRef, useState} from "react"
 import {useSpring} from "@react-spring/three"
 import * as THREE from "three"
@@ -11,10 +11,10 @@ import Scenes from "./Scenes"
 import {
     CreateCanvasWrapper,
     LoadingOverlay,
-    SavingScreen,
+    PanelButton,
     SavePopup,
     SavePopupFooter,
-    PanelButton
+    SavingScreen
 } from "@/styles/styledCreate";
 import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
 import {Button} from "primereact/button";
@@ -77,6 +77,8 @@ const Viewer = ({mode, DD, modelUrl}) => {
         setGl,
         scale,
         sizeType,
+        placeDecal,
+        setPlaceDecal,
         reset
     } = useStore();
 
@@ -318,6 +320,18 @@ const Viewer = ({mode, DD, modelUrl}) => {
 
     const {isMobile} = useMobileDetect()
 
+    const CameraSetup = () => {
+        if (!isMobile()) return null;
+        const {camera} = useThree();
+
+        useEffect(() => {
+            camera.position.set(0, 0, 2.2); // Adjust as needed
+            camera.lookAt(0, 0, 0); // Ensure the camera is looking at the origin
+        }, [camera]);
+
+        return null;
+    };
+
     return (
         <CanvasBackground>
             {loading && (<>
@@ -328,7 +342,7 @@ const Viewer = ({mode, DD, modelUrl}) => {
                     </div>
                 </SavingScreen>
             </>)}
-            <Hotkeys onClick={setAzimuthPose} />
+            <Hotkeys onClick={setAzimuthPose}/>
             <Toast ref={toastRef}/>
             <ConfirmPopup/>
             <Dialog visible={dialogVisible} modal header={"Save Model"} footer={footerContent}
@@ -355,13 +369,17 @@ const Viewer = ({mode, DD, modelUrl}) => {
 
             <div className="export-glb-div">
                 <a href="" ref={link}></a>
-                <SplitButton id="export-container" label={(isMobile() ? "" : "Export")} icon={"pi pi-file-export"} model={items}
-                             onClick={async () => {
-                             }} raised/>
-                <Button id="save-button" label={(isMobile() ? "" : "Save") + (saved.state ? "" : "*")} icon={"pi pi-save"}
+                <Button id="save-button" label={(isMobile() ? "" : "Save") + (saved.state ? "" : "*")}
+                        icon={"pi pi-save"}
                         onClick={handleSaveBtnClick} raised>
                 </Button>
-                <Button id="reset-button" label={(isMobile() ? "" : "Reset")} icon={"pi pi-eraser"} onClick={handleReset} raised/>
+                <SplitButton id="export-container" label={(isMobile() ? "" : "Export")} icon={"pi pi-file"}
+                             model={items}
+                             onClick={async () => {
+                                 // Cart Logic
+                             }} raised/>
+                <Button id="reset-button" label={(isMobile() ? "" : "Reset")} icon={"pi pi-eraser"}
+                        onClick={handleReset} raised/>
             </div>
             <CreateCanvasWrapper
                 camera={{position: [0, 0, 2.2], fov: isMobile() ? 70 : 50}}
@@ -373,6 +391,7 @@ const Viewer = ({mode, DD, modelUrl}) => {
                 shadows
                 style={{cursor: decalPath ? "none" : "auto", backgroundColor: "#101010"}}
             >
+                <CameraSetup />
                 <DecalHelper modelRayData={modelRayData} size={decalSize}/>
                 <Suspense fallback={null}>
                     {

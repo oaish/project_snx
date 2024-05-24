@@ -1,5 +1,5 @@
 import {useFrame, useLoader} from "@react-three/fiber"
-import {useEffect, useRef} from "react"
+import {useEffect, useRef, useState} from "react"
 import {a} from "@react-spring/three"
 import * as THREE from "three"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
@@ -26,10 +26,13 @@ const ShirtModel = ({modelRef, groupRef, url, rotation, setModelRayData}) => {
         setDecalSize,
         setDecalName,
         scale,
+        placeDecal,
+        setPlaceDecal,
         removeDecal
     } = useStore()
 
     const {addDecalData} = useDecalStore()
+    const [event, setEvent] = useState({})
 
     // STATE
     const timestamp = useRef(window.performance.now())
@@ -44,9 +47,21 @@ const ShirtModel = ({modelRef, groupRef, url, rotation, setModelRayData}) => {
         if (!animation) groupRef.current.rotation.y = 0
     }, [animation])
 
+    useEffect(() => {
+        // Center the geometry
+        modelRef.current.geometry.center();
+    }, []);
+
+    useEffect(() => {
+        if (!placeDecal && decalPath === null) return
+        if (event.intersections === undefined) return;
+        handleDecal(event)
+        setEvent({})
+        setPlaceDecal(false)
+    }, [placeDecal])
+
     // LOAD MODEL
     const gltf = useLoader(GLTFLoader, url)
-
     // ADD DECAL TO ARRAY
     const handleDecal = (e) => {
         if (decalPath === null) return
@@ -55,6 +70,11 @@ const ShirtModel = ({modelRef, groupRef, url, rotation, setModelRayData}) => {
             new THREE.TextureLoader().load(image, (decalTexture) => {
                 const {x: x1, y: y1, z: z1} = e.intersections[0].point
                 const {x: x2, y: y2, z: z2} = modelRef.current.localToWorld(e.intersections[0].face.normal)
+
+                console.clear()
+                console.log("POINT:", {
+                    x1, y1, z1
+                })
 
                 const {decal, key} = createDecal(modelRef.current, // Geometry
                     new THREE.Vector3(x1, y1, z1), // Position
@@ -93,8 +113,11 @@ const ShirtModel = ({modelRef, groupRef, url, rotation, setModelRayData}) => {
 
     // PASS RAYCAST
     const passRaycast = (e) => {
+        console.clear()
+        console.log("Event:", e)
         // Only submit while decal is active
         if (decalPath) {
+            setEvent(e)
             if (timestamp.current + 16 <= window.performance.now()) {
                 // DEBOUNCE: Update timestamp for new interval
                 timestamp.current = window.performance.now()
@@ -118,12 +141,12 @@ const ShirtModel = ({modelRef, groupRef, url, rotation, setModelRayData}) => {
     const {isMobile} = useMobileDetect()
 
     return (
-        <a.group ref={groupRef} rotation={rotation} castShadow scale={scale} position-x={isMobile() ? -0.01 : 0}>
+        <a.group ref={groupRef} rotation={rotation} castShadow scale={scale}>
             <mesh
                 ref={modelRef}
                 onPointerMove={passRaycast}
                 onPointerOut={removeRaycast}
-                onPointerDown={handleDecal}
+                onPointerDown={isMobile() ? null : handleDecal}
                 geometry={gltf.scene.children[0].geometry}
                 castShadow
             >

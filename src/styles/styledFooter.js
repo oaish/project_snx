@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
     width: 100%;
-    height: 0.80rem;
+    height: 4rem;
     border-top: 4px var(--primary-theme-color) solid;
     background-color: var(--primary-comp-bg);
     margin-left: 5%;
-    padding: 2% 3%;
+    padding: 0 3%;
     display: flex;
     align-items: center;
     color: var(--primary-theme-color);

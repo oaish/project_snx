@@ -259,6 +259,15 @@ button::-moz-focus-inner,
         translate: -50%;
         gap: 10px;
     }
+
+    .export-glb-div button {
+        background: var(--primary-color-black) !important
+    }
+
+    .enter {
+        top: -50% !important;
+        height: 60px !important;
+    }
 }
 
 a:focus,
