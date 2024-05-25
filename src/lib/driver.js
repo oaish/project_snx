@@ -20,10 +20,24 @@ export const navDriver = () => {
 				}
 			},
 			{
+				element: '#trending-link',
+				popover: {
+					title: 'Trending',
+					description: 'Discover what\'s trending now. Stay up-to-date with the latest and most popular items, topics, and activities on SnX.'
+				}
+			},
+			{
 				element: '#create-link',
 				popover: {
 					title: 'Create',
 					description: 'Initiate the creation of new outfits. Get started on designing and crafting your latest ensemble with our intuitive outfit customization tools.'
+				}
+			},
+			{
+				element: '#cart-link',
+				popover: {
+					title: 'Cart',
+					description: 'View and manage the items in your cart. Adjust quantities, remove items, and proceed to checkout to complete your purchase.'
 				}
 			},
 			{
