@@ -51,7 +51,7 @@ export const CartItem = (props) => {
 
     return (
         <>
-            <StyledCartItem onClick={toggleDetails}>
+            <StyledCartItem>
                 <ModelContainer>
                     <img src={props.img} alt="" />
                     <div>
