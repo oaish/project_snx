@@ -35,12 +35,6 @@ export const StyledHeaderTitle = styled(motion.h1)`
     }
 
     @media (max-width: 768px) {
-        justify-content: center;
-        font-size: 2rem;
-        margin-left: 0;
-        position: relative;
-        translate: 0;
-        text-align: justify;
-        width: 100%;
+        display: none;
     }
 `;

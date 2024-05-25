@@ -59,13 +59,13 @@ const StyledNav = styled(motion.div)`
         top: 0;
         height: 4rem;
         z-index: 100;
-        background: #1d1d1d;
+        background: var(--primary-color-black);
         grid-template-columns: 4rem 1fr 4rem;
         border-bottom: 4px solid var(--primary-theme-color);
     }
 
     #project-link, #profile-link {
-        background: #2c2c2c;
+        background: var(--primary-comp-bg);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -96,7 +96,7 @@ const StyledNav = styled(motion.div)`
         justify-content: center;
         align-items: center;
         font-size: 1.5rem;
-        font-weight: bold;
+        font-weight: normal;
         color: var(--primary-theme-color);
     }
 `;
