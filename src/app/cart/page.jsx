@@ -3,8 +3,6 @@
 import {PageContainer} from "@/styles/styledGlobal";
 import StyledProgressBar from "@/components/ui/StyledProgressBar";
 import {fadeLeft} from "@/styles/styledAnimations";
-import HeaderTitle from "@/components/ui/HeaderTitle";
-import {FaCartShopping} from "react-icons/fa6";
 import {CartItem} from "@/components/_cart/CartItem";
 import {ObjCart} from "@/lib/objCart";
 import {styled} from "styled-components";
@@ -29,48 +27,117 @@ export default function Page() {
 					paddingLeft: "2.5rem",
 				}}
 			>
-				<HeaderTitle icon={<FaCartShopping/>} content={"Your Cart"}/>
-				{ObjCart.map((item, index) => (
-					<CartItem key={index} name={item.name} price={item.price} img={item.img} type={item.type}/>
-				))}
-				<CartDetailsContainer>
-					<TotalText>Items: {ObjCart.length}</TotalText>
-					<TotalText>Total: ${totalPrice}.00</TotalText>
-					<CheckoutButton>Checkout</CheckoutButton>
-				</CartDetailsContainer>
+				<ItemsContainer>
+					<div className="items">
+						{ObjCart.map((item, index) => (
+							<CartItem
+								key={index}
+								name={item.name}
+								price={item.price}
+								img={item.img}
+								type={item.type}
+								showSeparator={index !== ObjCart.length - 1}
+							/>
+						))}
+					</div>
+					<div className="checkout">
+						<div className="pay-details">
+							<h4>Number of items: {ObjCart.length}</h4>
+							<br/>
+							<h3>Total: ${totalPrice}.00</h3>
+						</div>
+						<div>
+							<CheckoutButton>
+								Checkout
+							</CheckoutButton>
+						</div>
+					</div>
+				</ItemsContainer>
 			</PageContainer>
 		</>
 	);
 }
 
-const CartDetailsContainer = styled.div`
-    margin-top: 2rem;
-    margin-left: 2rem;
+const ItemsContainer = styled.div`
+    width: 95%;
     display: flex;
-    width: 90%;
-    align-items: center;
     justify-content: space-between;
-    border-top: 2px solid var(--primary-theme-color);
-    padding-top: 1rem;
+
+    > .items {
+        margin: 0.5rem;
+        width: 65%;
+        padding: 0.25rem;
+        background-color: var(--primary-comp-bg);
+        border-radius: 12px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    > .checkout {
+        width: 35%;
+        border-radius: 12px;
+
+        > .pay-details {
+            margin: 1rem 0.5rem 0.5rem;
+            padding: 1rem;
+            background-color: var(--primary-comp-bg);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            margin-left: 1rem;
+            width: 105%;
+        }
+    }
+
+    > div {
+
+        > .seperator {
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 1rem;
+            height: 1px;
+            width: 95%;
+            background-color: var(--primary-text-color);
+
+            @media (max-width: 768px) {
+                width: 90%;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+
+        > .items {
+            margin-left: 1.5rem;
+            width: 100%;
+            padding: 0.25rem;
+            background-color: var(--primary-comp-bg);
+            border-radius: 12px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    }
 `
 
-const TotalText = styled.h1`
-    margin-left: 2rem;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: var(--primary-theme-color);
-`
-const CheckoutButton = styled.button`
-    color: var(--primary-theme-color);
+const CheckoutButton = styled.div`
+    margin: 1rem 0.5rem 0.5rem;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.5rem;
     border-radius: 8px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    background-color: var(--primary-comp-bg);
+    color: var(--primary-comp-bg);
+    background-color: var(--primary-theme-color);
     transition: 0.25s all linear;
+    font-size: 1.2rem;
+    font-weight: bold;
 
     &:hover {
-        background-color: var(--primary-theme-color);
-        color: var(--primary-comp-bg);
+        background-color: var(--primary-comp-bg);
+        color: var(--primary-theme-color);
+        cursor: pointer;
     }
 `

@@ -8,8 +8,8 @@
     --primary-color-yellow: #fdf800;
     --primary-color-blue: #02d7f2;
     --primary-color-red: #FF003C;
-    --primary-color-black: #1d1d1d;
-    --primary-comp-bg: #2c2c2c;
+    --primary-color-black: #181818;
+    --primary-comp-bg: #302f2f;
 
     --primary-bg: rgba(20, 20, 20, 0.75);
 
@@ -17,7 +17,7 @@
 
     --primary-text-color: #ccc;
 
-    --primary-nav-background-color: #3c3c3c;
+    --primary-nav-background-color: #282828;
     --primary-nav-text-color: #fff;
 }
 

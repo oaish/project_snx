@@ -1,279 +1,210 @@
 "use client";
 
-import {keyframes, styled} from "styled-components";
+import {styled} from "styled-components";
+import {useState} from "react";
+import {FaX} from "react-icons/fa6";
 import {FaMinus, FaPlus} from "react-icons/fa";
-import {FaTrashCan} from "react-icons/fa6";
-import {useRef, useState} from "react";
 
 export const CartItem = (props) => {
 	const [quantity, setQuantity] = useState(1);
-	const [showDetails, setShowDetails] = useState(false);
-	const [isAnimating, setIsAnimating] = useState(false);
-	const detailsRef = useRef(null);
-
-	const toggleDetails = () => {
-		if (showDetails) {
-			setIsAnimating(true);
-			setTimeout(() => {
-				setShowDetails(false);
-				setIsAnimating(false);
-			}, 150);
-		} else {
-			setShowDetails(true);
-		}
+	const incrementQuantity = () => {
+		setQuantity(prevQuantity => prevQuantity + 1);
 	};
-
-	const decQuantity = () => {
+	const decrementQuantity = () => {
 		if (quantity <= 1) {
-			alert("Quantity can't be less than 1");
+			alert("Quantity is required");
 		} else {
-			setQuantity(quantity - 1);
+			setQuantity(prevQuantity => prevQuantity - 1);
 		}
 	};
-
 	return (
 		<>
-			<StyledCartItem>
+			<ItemContainer>
 				<ModelContainer>
-					<img src={props.img} alt=""/>
-					<div>
-						<p>{props.name}</p>
-						<p>{props.type}</p>
-					</div>
+					<img src={props.img} alt="model_image"/>
 				</ModelContainer>
-				<ToggleContainer>
-					<ToggleButton onClick={toggleDetails}>
-						{!showDetails ? "Show Details" : "Hide Details"}
-					</ToggleButton>
-				</ToggleContainer>
-			</StyledCartItem>
-			{(showDetails || isAnimating) && (
-				<DetailsContainer ref={detailsRef} className={showDetails && !isAnimating ? "show" : "hide"}>
-					<QuantityContainer>
-						<FaPlus size={30} onClick={() => setQuantity(quantity + 1)}/>
-						<p>Quantity: {quantity}</p>
-						<FaMinus size={30} onClick={decQuantity}/>
-					</QuantityContainer>
-					<PriceContainer>
-						<h4>Price: {props.price}</h4>
-						<FaTrashCan size={30}/>
-					</PriceContainer>
+				<DetailsContainer>
+					<TopContainer>
+						<div>
+							<p className="name">Name: {props.name}</p>
+							<p className="type">Type: {props.type}</p>
+						</div>
+						<RemoveContainer>
+							<FaX/>
+						</RemoveContainer>
+					</TopContainer>
+					<BottomContainer>
+						<PriceContainer>
+							<p>Price: {props.price}</p>
+						</PriceContainer>
+						<QuantityContainer>
+							<div>
+								<div onClick={incrementQuantity} className="button">
+									<FaPlus/>
+								</div>
+								<div>
+									{quantity}
+								</div>
+								<div onClick={decrementQuantity} className="button">
+									<FaMinus/>
+								</div>
+							</div>
+						</QuantityContainer>
+					</BottomContainer>
 				</DetailsContainer>
-			)}
+			</ItemContainer>
+			{props.showSeparator && <div className="seperator"></div>}
 		</>
 	);
 };
 
-const slideIn = keyframes`
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-`;
 
-const slideOut = keyframes`
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-`;
-
-const StyledCartItem = styled.div`
-    margin-left: 2rem;
-    margin-bottom: 0.5rem;
-    border-radius: 10px;
-    height: 11rem;
-    width: 90%;
-    background-color: var(--primary-comp-bg);
+const ItemContainer = styled.div`
+    padding: -1rem;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    transition: 0.25s all linear;
-    color: var(--primary-theme-color);
-
-    &:hover {
-        cursor: pointer;
-        opacity: 0.8;
-
-        > div > img {
-            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-        }
-    }
-
     @media (max-width: 768px) {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem;
-        width: 100%;
-        margin-left: 1rem;
+        height: fit-content;
     }
-`;
+`
 
 const ModelContainer = styled.div`
-    width: 33%;
-    display: flex;
-    align-items: center;
+    width: 30%;
 
     > img {
-        margin-left: 1rem;
-        margin-right: 1rem;
         object-fit: cover;
-        width: 9rem;
-        height: 9rem;
-        border-radius: 8px;
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-        background-color: rgba(61, 61, 61, 0.4);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 50%;
+        width: 75%;
     }
 
     @media (max-width: 768px) {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 1rem;
+        width: 40%;
+        > img {
+            width: 150%;
+            height: 150%;
+        }
     }
-`;
+`
 
 const DetailsContainer = styled.div`
-    &.show {
-        animation: ${slideIn} 0.3s forwards;
-        padding: 1rem;
-        margin-left: 2rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        border-radius: 10px;
-        justify-content: space-between;
-        width: 90%;
-        background-color: var(--primary-comp-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 60%;
+    @media (max-width: 768px) {
+    }
+`
+
+const TopContainer = styled.div`
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+
+    > div > .name {
+        font-size: 1.2rem;
     }
 
-    &.hide {
-        animation: ${slideOut} 0.3s forwards;
-        padding: 1rem;
-        margin-left: 2rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        border-radius: 10px;
-        justify-content: space-between;
-        width: 90%;
-        background-color: var(--primary-comp-bg);
+    > div > .type {
+        font-size: 0.9rem;
     }
 
     @media (max-width: 768px) {
-        width: 90%;
-        margin-left: 2rem;
-        flex-direction: column;
-        align-items: center;
+
+        padding-top: 1rem;
+
+        > div > .name {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        > div > .type {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
     }
-`;
+`
+
+const BottomContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+const PriceContainer = styled.div`
+    > p {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        > p {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+    }
+`
 
 const QuantityContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 50%;
-    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
 
-    > p {
-        font-size: 1.5rem;
-        color: var(--primary-text-color);
+    @media (min-width: 800px) {
+        margin-right: -4rem;
     }
 
-    > svg {
-        padding: 0.20rem;
-        border: 2px solid var(--primary-theme-color);
-        color: var(--primary-theme-color);
+    > div {
+        display: flex;
+        align-items: center;
+        background-color: var(--primary-color-black);
         border-radius: 8px;
-        transition: 0.25s all linear;
+        justify-content: center;
+    }
 
+    > div > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2rem;
+        width: 2rem;
+    }
+
+    > div > .button {
         &:hover {
             cursor: pointer;
-            border: 2px solid var(--primary-text-color);
-            color: var(--primary-text-color);
         }
     }
 
     @media (max-width: 768px) {
-        width: 100%;
-        justify-content: space-around;
+        margin-right: 0.5rem;
+        margin-top: -3rem;
         margin-bottom: 1rem;
-    }
-`;
-
-const PriceContainer = styled.div`
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    transition: all 0.3s ease-in-out;
-
-    > h4 {
-        color: var(--primary-text-color);
-        margin-right: 1rem;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-
-    > svg {
-        padding: 0.20rem;
-        border: 2px solid var(--primary-theme-color);
-        color: var(--primary-theme-color);
-        border-radius: 8px;
-        transition: 0.25s all linear;
-
-        &:hover {
-            cursor: pointer;
-            border: 2px solid var(--primary-text-color);
-            color: var (--primary-text-color);
+        > div {
+            flex-direction: column;
         }
     }
+`
 
-    @media (max-width: 768px) {
-        width: 100%;
-        justify-content: center;
-    }
-`;
-
-const ToggleContainer = styled.div`
+const RemoveContainer = styled.div`
     display: flex;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
     align-items: center;
-    justify-content: center;
-    width: 15%;
-
-    @media (max-width: 768px) {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 1rem;
-    }
-`;
-
-const ToggleButton = styled.button`
-    padding: 0.5rem 1rem;
     background-color: var(--primary-color-black);
-    color: var(--primary-text-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-
-    @media (max-width: 768px) {
-        width: 100%;
-    }
+    justify-content: center;
 
     &:hover {
-        background-color: var(--primary-theme-color);
-        color: var(--primary-color-black);
+        cursor: pointer;
     }
-`;
+
+    @media (min-width: 800px) {
+        margin-right: -4rem;
+    }
+
+    @media (max-width: 768px) {
+        margin-right: 0.5rem;
+    }
+`

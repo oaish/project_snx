@@ -1,26 +1,26 @@
 export const ObjCart = [
 	{
 		img: "/images/shirt.png",
-		name: "{MISSING_MODEL_NAME}",
+		name: "Shirt",
 		price: "$20.00",
-		type: "{MISSING_MODEL_TYPE}"
+		type: "Shirt"
 	},
 	{
 		img: "/images/pant.png",
-		name: "{MISSING_MODEL_NAME}",
+		name: "Pant",
 		price: "$15.00",
-		type: "{MISSING_MODEL_TYPE}"
+		type: "Pant"
 	},
 	{
 		img: "/images/shoes.png",
-		name: "{MISSING_MODEL_NAME}",
+		name: "Shoes",
 		price: "$10.00",
-		type: "{MISSING_MODEL_TYPE}"
+		type: "Shoes"
 	},
 	{
 		img: "/images/shirt.png",
-		name: "{MISSING_MODEL_NAME}",
-		price: "$5.00",
-		type: "{MISSING_MODEL_TYPE}"
+		name: "Shirt",
+		price: "$20.00",
+		type: "Shirt"
 	},
 ]
