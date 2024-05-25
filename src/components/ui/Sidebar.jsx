@@ -13,165 +13,165 @@ import AccountPopup from "@/components/_account/AccountPopup";
 import useAppStore from "@/states/appState";
 import {showToast} from "@/lib/helper";
 import {FaMoon, FaSun} from "react-icons/fa";
+import {AnimatePresence} from "framer-motion";
 
 
 const Sidebar = () => {
-	const pathname = usePathname();
-	const router = useRouter();
+    const pathname = usePathname();
+    const router = useRouter();
 
-	const [profile, setProfile] = useState(false);
-	const [userData, setUserData] = useState([]);
-	const toastRef = useRef(null);
+    const [profile, setProfile] = useState(false);
+    const toastRef = useRef(null);
 
-	const {user, setUser} = useAppStore();
+    const {setUser} = useAppStore();
 
-	const fetchUserData = async () => {
-		try {
-			const email = document.cookie.split(';')[0].split('=')[1]
-			if (email === "false") {
-				throw new Error("User not found");
-			}
+    const fetchUserData = async () => {
+        try {
+            const email = document.cookie.split(';')[0].split('=')[1]
+            if (email === "false") {
+                throw new Error("User not found");
+            }
 
-			const options = {
-				method: "POST",
-				body: JSON.stringify({
-					email: email
-				}),
-				headers: {
-					"Content-Type": "application/json",
-				}
-			};
+            const options = {
+                method: "POST",
+                body: JSON.stringify({
+                    email: email
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            };
 
-			const res = await fetch("/api/get/user/profile", options);
-			const data = await res.json();
-			if (!data || data.length === 0) {
-				return;
-			}
+            const res = await fetch("/api/get/user/profile", options);
+            const data = await res.json();
+            if (!data || data.length === 0) {
+                return;
+            }
 
-			setUserData(data)
+            setUser(data.currentUser)
+        } catch (error) {
+            router.push("/auth");
+            console.error("Error fetching user data:", error);
+            showToast("error", "Error", "Failed to fetch user data.", toastRef);
+        }
+    };
 
-		} catch (error) {
-			router.push("/auth");
-			console.error("Error fetching user data:", error);
-			showToast("error", "Error", "Failed to fetch user data.", toastRef);
-		}
-	};
-
-	useEffect(() => {
-		fetchUserData().then();
-	}, []);
+    useEffect(() => {
+        fetchUserData().then();
+    }, []);
 
 
-	const handleDriverStart = () => {
-		switch (pathname) {
-			case "/":
-				navDriver();
-				break;
-			case "/create":
-				createDriver();
-				break;
-			case "/create/new/shirt":
-			case "/create/new/pant":
-			case "/create/new/shoes":
-			case "/create/new/cap":
-			case "/create/recent/shirt":
-			case "/create/recent/pant":
-			case "/create/recent/shoes":
-			case "/create/recent/cap":
-				createDesignerDriver();
-				break;
-			case "/contact":
-				contactDriver();
-				break;
-			case "/account":
-				accountDriver();
-				break;
-			default:
-				break;
-		}
-	};
+    const handleDriverStart = () => {
+        switch (pathname) {
+            case "/":
+                navDriver();
+                break;
+            case "/create":
+                createDriver();
+                break;
+            case "/create/new/shirt":
+            case "/create/new/pant":
+            case "/create/new/shoes":
+            case "/create/new/cap":
+            case "/create/recent/shirt":
+            case "/create/recent/pant":
+            case "/create/recent/shoes":
+            case "/create/recent/cap":
+                createDesignerDriver();
+                break;
+            case "/contact":
+                contactDriver();
+                break;
+            case "/account":
+                accountDriver();
+                break;
+            default:
+                break;
+        }
+    };
 
-	const openProfile = () => {
-		setProfile(!profile);
-	}
+    const openProfile = () => {
+        console.log("Profile Opened", profile)
+        setProfile(true);
+    }
 
-	const [isDarkTheme, setIsDarkTheme] = useState(true);
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
 
-	const handleThemeToggle = () => {
-		setIsDarkTheme(!isDarkTheme);
-		document.documentElement.style.setProperty('--primary-color-black', isDarkTheme ? '#e0ffff' : '#1d1d1d');
-		document.documentElement.style.setProperty('--primary-text-color', isDarkTheme ? '#1d1d1d' : '#008080');
-		document.documentElement.style.setProperty('--primary-comp-bg', isDarkTheme ? '#b0e0e6' : '#2c2c2c');
-		document.documentElement.style.setProperty('--dropdown-text', isDarkTheme ? '#008080' : '#000');
-	};
+    const handleThemeToggle = () => {
+        setIsDarkTheme(!isDarkTheme);
+        document.documentElement.style.setProperty('--primary-color-black', isDarkTheme ? '#e0ffff' : '#1d1d1d');
+        document.documentElement.style.setProperty('--primary-text-color', isDarkTheme ? '#1d1d1d' : '#008080');
+        document.documentElement.style.setProperty('--primary-comp-bg', isDarkTheme ? '#b0e0e6' : '#2c2c2c');
+        document.documentElement.style.setProperty('--dropdown-text', isDarkTheme ? '#008080' : '#000');
+    };
 
-	return (
-		<>
-			<NLS.NavContainer>
-				<NLS.NavSubContainer>
-					<NLS.NavSubLeft className="navLinksTop">
-						<NLS.NavStyledUl>
-							{NavLinksTop.map((navLink, index) => (
-								<NLS.NavStyledLi key={index}>
-									<StyledLink id="project-link" href={navLink.path}>
-										<NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
-									</StyledLink>
-								</NLS.NavStyledLi>
-							))}
-						</NLS.NavStyledUl>
-					</NLS.NavSubLeft>
-				</NLS.NavSubContainer>
+    return (
+        <>
+            <NLS.NavContainer>
+                <NLS.NavSubContainer>
+                    <NLS.NavSubLeft className="navLinksTop">
+                        <NLS.NavStyledUl>
+                            {NavLinksTop.map((navLink, index) => (
+                                <NLS.NavStyledLi key={index}>
+                                    <StyledLink id="project-link" href={navLink.path}>
+                                        <NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
+                                    </StyledLink>
+                                </NLS.NavStyledLi>
+                            ))}
+                        </NLS.NavStyledUl>
+                    </NLS.NavSubLeft>
+                </NLS.NavSubContainer>
 
-				<NLS.NavSubContainer>
-					<NLS.NavSubRight>
-						<NLS.NavStyledUl>
-							{NavLinksTopMiddle.map((navLink, index) => (
-								<NLS.NavStyledLi key={index} className="middle-links">
-									<StyledLink id={navLink.id} href={navLink.path}>
-										<NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
-									</StyledLink>
-								</NLS.NavStyledLi>
-							))}
-							<NLS.NavStyledLi className="middle-links">
-								<StyledNotLink id="theme-link" onClick={() => handleThemeToggle()}>
-									<NLS.NavStyledIcon onClick={() => setIsDarkTheme(!isDarkTheme)}>
-										{isDarkTheme ? <FaSun/> : <FaMoon/>}
-									</NLS.NavStyledIcon>
-								</StyledNotLink>
-							</NLS.NavStyledLi>
-							<NLS.NavStyledLi className="middle-links">
-								<StyledNotLink id="help-button" onClick={() => handleDriverStart()}>
-									<NLS.NavStyledIcon>
-										<BiHelpCircle/>
-									</NLS.NavStyledIcon>
-								</StyledNotLink>
-							</NLS.NavStyledLi>
-						</NLS.NavStyledUl>
-					</NLS.NavSubRight>
-				</NLS.NavSubContainer>
+                <NLS.NavSubContainer>
+                    <NLS.NavSubRight>
+                        <NLS.NavStyledUl>
+                            {NavLinksTopMiddle.map((navLink, index) => (
+                                <NLS.NavStyledLi key={index} className="middle-links">
+                                    <StyledLink id={navLink.id} href={navLink.path}>
+                                        <NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
+                                    </StyledLink>
+                                </NLS.NavStyledLi>
+                            ))}
+                            <NLS.NavStyledLi className="middle-links">
+                                <StyledNotLink id="theme-link" onClick={() => handleThemeToggle()}>
+                                    <NLS.NavStyledIcon onClick={() => setIsDarkTheme(!isDarkTheme)}>
+                                        {isDarkTheme ? <FaSun/> : <FaMoon/>}
+                                    </NLS.NavStyledIcon>
+                                </StyledNotLink>
+                            </NLS.NavStyledLi>
+                            <NLS.NavStyledLi className="middle-links">
+                                <StyledNotLink id="help-button" onClick={() => handleDriverStart()}>
+                                    <NLS.NavStyledIcon>
+                                        <BiHelpCircle/>
+                                    </NLS.NavStyledIcon>
+                                </StyledNotLink>
+                            </NLS.NavStyledLi>
+                        </NLS.NavStyledUl>
+                    </NLS.NavSubRight>
+                </NLS.NavSubContainer>
 
-				<NLS.NavSubContainer>
-					<NLS.NavSubLeft className="navLinksBottom">
-						<NLS.NavStyledUl>
-							{NavLinksBottom.map((navLink, index) => (
-								<NLS.NavStyledLi key={index}>
-									<StyledNotLink id="account-link" onClick={openProfile}>
-										<NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
-									</StyledNotLink>
-								</NLS.NavStyledLi>
-							))}
-						</NLS.NavStyledUl>
-					</NLS.NavSubLeft>
-				</NLS.NavSubContainer>
-			</NLS.NavContainer>
-			{
-				profile ?
-					<>
-						<AccountPopup user={user} setProfile={setProfile}/>
-					</> : <></>
-			}
-		</>
-	);
+                <NLS.NavSubContainer>
+                    <NLS.NavSubLeft className="navLinksBottom">
+                        <NLS.NavStyledUl>
+                            {NavLinksBottom.map((navLink, index) => (
+                                <NLS.NavStyledLi key={index}>
+                                    <StyledNotLink id="account-link" onClick={openProfile}>
+                                        <NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
+                                    </StyledNotLink>
+                                </NLS.NavStyledLi>
+                            ))}
+                        </NLS.NavStyledUl>
+                    </NLS.NavSubLeft>
+                </NLS.NavSubContainer>
+                <AnimatePresence>
+                    {
+                        profile &&
+                        <AccountPopup setProfile={setProfile}/>
+                    }
+                </AnimatePresence>
+            </NLS.NavContainer>
+        </>
+    );
 };
 
 export default Sidebar;

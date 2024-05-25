@@ -12,9 +12,11 @@ export default function IconWithText({imgSrc, imgAlt, textContent, onClick, hidd
     return (
         <div className={s.wrapper} onClick={onClick}>
             <img ref={ref} className={s.img + ' ' + imgAlt} src={imgSrc} alt={imgAlt} onClick={() => {
-                if (imgAlt !== "Esc") {
+                if (imgAlt !== "Esc" || imgAlt !== "enter") {
                     ref.current.classList.add(s.active);
-                    setTimeout(() => ref.current.classList.remove(s.active), 300)
+                    setTimeout(() => {
+                        if (ref?.current) ref.current.classList.remove(s.active);
+                    }, 300)
                 }
             }}/>
             {textContent && !isMobile() && <StyledKeyText className={s.text}>{textContent}</StyledKeyText>}

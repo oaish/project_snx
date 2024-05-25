@@ -122,6 +122,8 @@ export default function ControlPanel() {
     );
 
     const {isMobile} = useMobileDetect()
+    const [inverse, setInverse] = useState(false);
+
 
     return (
         <div className={(isPanelOpen ? s.active + " " : "") + s.wrapper}>
@@ -145,9 +147,111 @@ export default function ControlPanel() {
             <div className={s.containerInner}>
                 <Card
                     id="color-container"
-                    title="Color"
+                    title={inverse ? "Background" : "Color"}
                     src="pi pi-palette"
-                    style={{width: isMobile() ? "auto" : "248px"}}
+                    hidden={!isMobile()}
+                    comp={
+                        inverse && bgData.map((bg) => {
+                            return (
+                                <Icon
+                                    onClick={() => {
+                                        setSet(bg.name)
+                                    }}
+                                    style={{width: '28px', height: '28px', backgroundImage: `url('${bg.thumb}')`}}
+                                    match={set}
+                                    id={bg.name}
+                                    key={bg.name}
+                                />
+                            )
+                        })
+                    }
+                    style={{width: "248px", position: "relative"}}
+                >
+                    {
+                        inverse ? <>
+                                {set === "bg_color" && (
+                                    <Compact
+                                        className={s.colorPicker}
+                                        color={backgroundColor}
+                                        onChange={(c) => {
+                                            setBackgroundColor(c.hex)
+                                            setIsPanelOpen(false)
+                                        }}
+                                    />
+                                )}
+                                {(set === "bg_image" || set === "bg_transparent") && (
+                                    <>
+                                        <div className={s.gridContainer}>
+                                            <Icon
+                                                imgSrc={"/thumbs/upload.svg"}
+                                                key={"custom"}
+                                                id={"custom"}
+                                                match={backgroundImage.name}
+                                                onClick={() => customBgRef.current.click()}
+                                            />
+                                            <input
+                                                ref={customBgRef}
+                                                style={{display: "none"}}
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={(data) =>
+                                                    setBackgroundImage({
+                                                        data: data.target.files[0],
+                                                        name: "custom",
+                                                    })
+                                                }
+                                            />
+                                            {bgSampleImages.map((img) => {
+                                                return (
+                                                    <Icon
+                                                        imgSrc={img.path}
+                                                        key={img.name}
+                                                        id={img.name}
+                                                        match={backgroundImage.name}
+                                                        onClick={() => {
+                                                            setSet("bg_image")
+                                                            setBackgroundImage({
+                                                                path: img.path,
+                                                                name: img.name,
+                                                                author: img.author,
+                                                            })
+                                                        }}
+                                                    />
+                                                )
+                                            })}
+                                            <Icon
+                                                imgSrc={'/thumbs/bg_transparent.svg'}
+                                                onClick={() => {
+                                                    setSet('bg_transparent')
+                                                }}
+                                                match={set}
+                                                id={'bg_transparent'}
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                            </> :
+                            <Compact
+                                className={s.colorPicker}
+                                color={modelColor}
+                                onChange={(c) => {
+                                    setModelColor(c.hex)
+                                    setIsPanelOpen(false)
+                                }}
+                            />
+                    }
+
+                    <div className={s.inverse} onClick={() => setInverse(!inverse)}>
+                        <img src="/images/icons/swap.svg" alt=""/>
+                    </div>
+                </Card>
+
+                <Card
+                    id="color-container"
+                    title="Color"
+                    hidden={isMobile()}
+                    src="pi pi-palette"
+                    style={{width: "248px"}}
                 >
                     <Compact
                         className={s.colorPicker}
@@ -163,6 +267,7 @@ export default function ControlPanel() {
                     id="background-container"
                     title="Background"
                     src="pi pi-slack"
+                    hidden={isMobile()}
                     comp={
                         bgData.map((bg) => {
                             return (
@@ -286,61 +391,60 @@ export default function ControlPanel() {
                     </div>
                 </Card>
 
-                {
-                    !isMobile() &&
-                    <Card
-                        id="size-container"
-                        title="Size"
-                        src="pi pi-arrows-alt"
-                    >
-                        <div className="flex justify-center items-center">
-                            <Icon
-                                title="Small"
-                                onClick={() => {
-                                    setSizeType("size_S")
-                                    setScale(0.95)
-                                }}
-                                match={sizeType}
-                                id="size_S"
-                                style={{margin: '10px'}}
-                                textContent={"S"}
-                            />
-                            <Icon
-                                title="Medium"
-                                onClick={() => {
-                                    setSizeType("size_M")
-                                    setScale(1)
-                                }}
-                                match={sizeType}
-                                id="size_M"
-                                style={{margin: '10px'}}
-                                textContent={"M"}
-                            />
-                            <Icon
-                                title="Large"
-                                onClick={() => {
-                                    setSizeType("size_L")
-                                    setScale(1.05)
-                                }}
-                                match={sizeType}
-                                id="size_L"
-                                style={{margin: '10px'}}
-                                textContent={"L"}
-                            />
-                            <Icon
-                                title="Extra Large"
-                                onClick={() => {
-                                    setSizeType("size_XL")
-                                    setScale(1.1)
-                                }}
-                                match={sizeType}
-                                id="size_XL"
-                                style={{margin: '10px'}}
-                                textContent={"XL"}
-                            />
-                        </div>
-                    </Card>
-                }
+
+                <Card
+                    id="size-container"
+                    title="Size"
+                    hidden={isMobile()}
+                    src="pi pi-arrows-alt"
+                >
+                    <div className="flex justify-center items-center">
+                        <Icon
+                            title="Small"
+                            onClick={() => {
+                                setSizeType("size_S")
+                                setScale(0.95)
+                            }}
+                            match={sizeType}
+                            id="size_S"
+                            style={{margin: '10px'}}
+                            textContent={"S"}
+                        />
+                        <Icon
+                            title="Medium"
+                            onClick={() => {
+                                setSizeType("size_M")
+                                setScale(1)
+                            }}
+                            match={sizeType}
+                            id="size_M"
+                            style={{margin: '10px'}}
+                            textContent={"M"}
+                        />
+                        <Icon
+                            title="Large"
+                            onClick={() => {
+                                setSizeType("size_L")
+                                setScale(1.05)
+                            }}
+                            match={sizeType}
+                            id="size_L"
+                            style={{margin: '10px'}}
+                            textContent={"L"}
+                        />
+                        <Icon
+                            title="Extra Large"
+                            onClick={() => {
+                                setSizeType("size_XL")
+                                setScale(1.1)
+                            }}
+                            match={sizeType}
+                            id="size_XL"
+                            style={{margin: '10px'}}
+                            textContent={"XL"}
+                        />
+                    </div>
+                </Card>
 
 
                 <Card

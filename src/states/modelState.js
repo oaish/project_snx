@@ -6,7 +6,7 @@ const useStore = create((set) => ({
     animation: null,
     backgroundColor: "#008080",
     backgroundImage: {
-        data: "", name: "", path: "", author: {name: "", link: ""},
+        data: null, name: null, path: null, author: {name: null, link: null},
     },
     isWriting: false,
     canvasSize: {name: "Choose format", width: 600, height: 600},
