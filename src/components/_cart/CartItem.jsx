@@ -1,85 +1,67 @@
 "use client";
 
-import { keyframes, styled } from "styled-components";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import { FaTrashCan } from "react-icons/fa6";
-import { useState, useEffect, useRef } from "react";
+import {keyframes, styled} from "styled-components";
+import {FaMinus, FaPlus} from "react-icons/fa";
+import {FaTrashCan} from "react-icons/fa6";
+import {useRef, useState} from "react";
 
 export const CartItem = (props) => {
-    const [quantity, setQuantity] = useState(1);
-    const [showDetails, setShowDetails] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
-    const detailsRef = useRef(null);
+	const [quantity, setQuantity] = useState(1);
+	const [showDetails, setShowDetails] = useState(false);
+	const [isAnimating, setIsAnimating] = useState(false);
+	const detailsRef = useRef(null);
 
-    const toggleDetails = () => {
-        if (showDetails) {
-            setIsAnimating(true);
-            setTimeout(() => {
-                setShowDetails(false);
-                setIsAnimating(false);
-            }, 150);
-        } else {
-            setShowDetails(true);
-        }
-    };
+	const toggleDetails = () => {
+		if (showDetails) {
+			setIsAnimating(true);
+			setTimeout(() => {
+				setShowDetails(false);
+				setIsAnimating(false);
+			}, 150);
+		} else {
+			setShowDetails(true);
+		}
+	};
 
-    const decQuantity = () => {
-        if (quantity <= 1) {
-            alert("Quantity can't be less than 1");
-        } else {
-            setQuantity(quantity - 1);
-        }
-    };
+	const decQuantity = () => {
+		if (quantity <= 1) {
+			alert("Quantity can't be less than 1");
+		} else {
+			setQuantity(quantity - 1);
+		}
+	};
 
-    const handleClickOutside = (event) => {
-        if (detailsRef.current && !detailsRef.current.contains(event.target)) {
-            setShowDetails(false);
-        }
-    };
-
-    useEffect(() => {
-        if (showDetails) {
-            document.addEventListener("mousedown", handleClickOutside);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [showDetails]);
-
-    return (
-        <>
-            <StyledCartItem>
-                <ModelContainer>
-                    <img src={props.img} alt="" />
-                    <div>
-                        <p>{props.name}</p>
-                        <p>{props.type}</p>
-                    </div>
-                </ModelContainer>
-                <ToggleContainer>
-                    <ToggleButton onClick={toggleDetails}>
-                        {!showDetails ? "Show Details" : "Hide Details"}
-                    </ToggleButton>
-                </ToggleContainer>
-            </StyledCartItem>
-            {(showDetails || isAnimating) && (
-                <DetailsContainer ref={detailsRef} className={showDetails && !isAnimating ? "show" : "hide"}>
-                    <QuantityContainer>
-                        <FaPlus size={30} onClick={() => setQuantity(quantity + 1)} />
-                        <p>Quantity: {quantity}</p>
-                        <FaMinus size={30} onClick={decQuantity} />
-                    </QuantityContainer>
-                    <PriceContainer>
-                        <h4>Price: {props.price}</h4>
-                        <FaTrashCan size={30} />
-                    </PriceContainer>
-                </DetailsContainer>
-            )}
-        </>
-    );
+	return (
+		<>
+			<StyledCartItem>
+				<ModelContainer>
+					<img src={props.img} alt=""/>
+					<div>
+						<p>{props.name}</p>
+						<p>{props.type}</p>
+					</div>
+				</ModelContainer>
+				<ToggleContainer>
+					<ToggleButton onClick={toggleDetails}>
+						{!showDetails ? "Show Details" : "Hide Details"}
+					</ToggleButton>
+				</ToggleContainer>
+			</StyledCartItem>
+			{(showDetails || isAnimating) && (
+				<DetailsContainer ref={detailsRef} className={showDetails && !isAnimating ? "show" : "hide"}>
+					<QuantityContainer>
+						<FaPlus size={30} onClick={() => setQuantity(quantity + 1)}/>
+						<p>Quantity: {quantity}</p>
+						<FaMinus size={30} onClick={decQuantity}/>
+					</QuantityContainer>
+					<PriceContainer>
+						<h4>Price: {props.price}</h4>
+						<FaTrashCan size={30}/>
+					</PriceContainer>
+				</DetailsContainer>
+			)}
+		</>
+	);
 };
 
 const slideIn = keyframes`
