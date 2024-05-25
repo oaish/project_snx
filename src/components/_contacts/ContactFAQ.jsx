@@ -12,14 +12,14 @@ export default function ContactFAQ() {
 			<ContactSection>
 				<StyledContainer>
 					<StyledFlexContainer
-						variants={scaleUp}
+						variants={fadeLeft}
 						initial="initial"
 						animate="show"
 					>
 						<StyledTitle
-							variants={fadeUp}
+							variants={fadeLeft}
 							style={{
-								marginLeft: "-5rem"
+								marginLeft: "-7rem"
 							}}
 						>
 							<FaQuestionCircle/> FAQ
@@ -33,7 +33,7 @@ export default function ContactFAQ() {
 					>
 						<Accordion
 							variant="splitted"
-							variants={fadeDown}
+							variants={fadeLeft}
 						>
 							{contactAccordionItems.map((item) => (
 								<AccordionItem
@@ -48,7 +48,6 @@ export default function ContactFAQ() {
 								</AccordionItem>))}
 						</Accordion>
 					</ContactAccordianContainer>
-
 				</StyledContainer>
 			</ContactSection>
 		</>

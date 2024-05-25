@@ -4,7 +4,7 @@ import {motion} from "framer-motion";
 
 export const ContactSection = styled.section`
     width: 100%;
-	margin: 7rem 0;
+	margin: 2rem 0;
 	
     @media (min-width: 768px) {
         padding: 24px 0;
@@ -72,7 +72,7 @@ export const HeaderText = styled.p`
 `;
 
 export const ContactGrid = styled.div`
-    margin-top: 1rem;
+    margin-top: 3rem;
     margin-left: 2rem;
     width: 90%;
     display: grid;

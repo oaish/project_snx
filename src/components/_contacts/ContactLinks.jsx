@@ -7,7 +7,7 @@ import {
 	ContactTitle
 } from "@/styles/styledContacts";
 import {FaLink} from "react-icons/fa";
-import {fadeUp, scaleUp} from "@/styles/styledAnimations";
+import {fadeLeft, fadeUp, scaleUp} from "@/styles/styledAnimations";
 import {StyledContainer, StyledFlexContainer, StyledParagraph, StyledTitle} from "@/styles/styledHome";
 import React from "react";
 import {contactLinks} from "@/lib/objContact";
@@ -18,17 +18,17 @@ export default function ContactLinks() {
 			<ContactSection>
 				<StyledContainer>
 					<StyledFlexContainer
-						variants={scaleUp}
+						variants={fadeLeft}
 						initial="initial"
 						animate="show"
 					>
 						<StyledTitle
-							variants={fadeUp}
+							variants={fadeLeft}
 						>
 							<FaLink/> Get in Touch
 						</StyledTitle>
 						<StyledParagraph
-							variants={fadeUp}
+							variants={fadeLeft}
 						>
 							Have a question or want to collaborate? Reach out to us through any of the channels below.
 						</StyledParagraph>

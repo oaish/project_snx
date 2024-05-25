@@ -70,12 +70,10 @@ export const StyledTitle = styled(motion.h1)`
             margin-right: 2rem;
         }
     }
-
-    
-
 `;
 
 export const StyledParagraph = styled(motion.p)`
+	width: 100%;
     max-width: 43.75rem;
     margin-bottom: 1rem;
     color: var(--primary-text-color);

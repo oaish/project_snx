@@ -21,14 +21,14 @@ export default function Page() {
     return (
         <>
             <StyledProgressBar/>
-            <PageContainer
-                variants={fadeLeft}
-                initial="initial"
-                animate="show"
-                style={{
-                    paddingLeft: "2.5rem",
-                }}
-            >
+			<PageContainer
+				variants={fadeLeft}
+				initial="initial"
+				animate="show"
+				style={{
+					paddingLeft: "2.5rem"
+				}}
+			>
                 <ContactAbout/>
                 <ContactLinks/>
                 <ContactFAQ/>

@@ -4,9 +4,8 @@ import {useRef} from "react";
 import {Toast} from "primereact/toast";
 import {showToast} from "@/lib/helper";
 import {fadeLeft} from "@/styles/styledAnimations";
-import HeaderTitle from "@/components/ui/HeaderTitle";
 import HeaderSub from "@/components/ui/HeaderSub";
-import {StyledTitle} from "@/styles/styledAuth";
+import {StyledTitle} from "@/styles/styledHome";
 
 export default function ContactReview() {
 	const emailRegex = /^[a-zA-Z0-9_+.]+@[a-zA-Z]+\.+[a-z]{2,}$/;
@@ -75,14 +74,11 @@ export default function ContactReview() {
 
 
 	return (<>
+		<StyledTitle>
+			<FaShareAlt/>
+			Share Feedback
+		</StyledTitle>
 		<StyledContactSection>
-			<HeaderTitle
-				icon={<FaShareAlt/>}
-				content={"Share Feedback"}
-			/>
-			<StyledTitle>
-				lorem
-			</StyledTitle>
 			<ContactInputContainer
 				variants={fadeLeft}
 				initial="initial"
