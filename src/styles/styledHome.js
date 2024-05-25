@@ -40,6 +40,7 @@ export const StyledFlexContainer = styled(motion.div)`
 `;
 
 export const StyledTitle = styled(motion.h1)`
+    width: 100%;
     margin-bottom: 1rem;
     color: var(--primary-theme-color);
     display: flex;
@@ -69,6 +70,8 @@ export const StyledTitle = styled(motion.h1)`
             margin-right: 2rem;
         }
     }
+
+    
 
 `;
 

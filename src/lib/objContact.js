@@ -1,26 +1,11 @@
-import {FaMailBulk, FaTwitter} from "react-icons/fa";
-import {FaInstagram} from "react-icons/fa6";
-
-export const ObjContact = [
-	{
-		icon: <FaMailBulk/>,
-		title: "Mail",
-		path: "https://gmail.com",
-		content: "Reach out: Your emails make our day bigger!"
-	},
-	{
-		icon: <FaTwitter/>,
-		title: "Twitter",
-		path: "https://twitter.com",
-		content: "Tweet with us: Join the conversation, 280 characters/Meshes at a time."
-	},
-	{
-		icon: <FaInstagram/>,
-		title: "Instagram",
-		path: "https://instagram.com",
-		content: "Picture-perfect moments: Explore SnX on Instagram!"
-	},
-];
+import {
+	GithubIcon,
+	InstagramIcon,
+	LinkedinIcon,
+	MailIcon,
+	PhoneIcon,
+	TwitterIcon
+} from "../../public/images/icons/Icons";
 
 export const contactAccordionItems = [
 	{
@@ -53,4 +38,43 @@ export const contactAccordionItems = [
 		title: "How Does SnX Ensure Security and Privacy for User Data?",
 		content: " At SnX, user security and privacy are of utmost importance. We employ robust encryption protocols and data protection measures to safeguard your personal information and ensure confidentiality at every step of the customization process. We adhere to stringent privacy policies and industry standards to maintain the integrity and security of your data, allowing you to customize your outfits with peace of mind.",
 	},
+];
+
+export const contactLinks = [
+	{
+		icon: <MailIcon/>,
+		title: "Email",
+		link: "mailto:snx@gmail.com",
+		text: "snx@gmail.com"
+	},
+	{
+		icon: <PhoneIcon/>,
+		title: "Phone",
+		link: "tel:+911234567890",
+		text: "+91-1234567890"
+	},
+	{
+		icon: <TwitterIcon/>,
+		title: "Twitter",
+		link: "https://twitter.com/snx",
+		text: "@snx"
+	},
+	{
+		icon: <LinkedinIcon/>,
+		title: "LinkedIn",
+		link: "https://linkedin.com/company/snx",
+		text: "SnX Pvt. Ltd"
+	},
+	{
+		icon: <InstagramIcon/>,
+		title: "Instagram",
+		link: "https://instagram.com/snx",
+		text: "@snx"
+	},
+	{
+		icon: <GithubIcon/>,
+		title: "GitHub",
+		link: "https://github.com/snx",
+		text: "SnX"
+	}
 ];
