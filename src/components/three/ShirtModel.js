@@ -146,7 +146,7 @@ const ShirtModel = ({modelRef, groupRef, url, rotation, setModelRayData}) => {
                 ref={modelRef}
                 onPointerMove={passRaycast}
                 onPointerOut={removeRaycast}
-                onPointerDown={isMobile() ? null : handleDecal}
+                onPointerDown={isMobile() ? passRaycast : handleDecal}
                 geometry={gltf.scene.children[0].geometry}
                 castShadow
             >

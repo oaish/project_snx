@@ -48,14 +48,20 @@ export const fadeDown = {
 		y: 0,
 		opacity: 1,
 		transition: {
-			duration: 1,
+			type: 'spring',
+			stiffness: 300,
+			damping: 20,
+			duration: 0.25,
 		},
 	},
 	exit: {
 		y: -100,
 		opacity: 0,
 		transition: {
-			duration: 0.75,
+			type: 'spring',
+			stiffness: 300,
+			damping: 20,
+			duration: 0.25,
 		},
 	},
 };
@@ -123,6 +129,33 @@ export const fadeLeft = {
 	},
 	exit: {
 		x: 100,
+		transition: {
+			type: 'spring',
+			stiffness: 200,
+			damping: 20,
+			duration: 0.75,
+		},
+	},
+};
+
+export const fadeLeftToRight = {
+	initial: {
+		x: 100,
+		opacity: 0,
+	},
+	show: {
+		x: 0,
+		opacity: 1,
+		transition: {
+			type: 'spring',
+			stiffness: 300,
+			damping: 20,
+			duration: 0.25,
+		},
+	},
+	exit: {
+		x: -100,
+		opacity: 0,
 		transition: {
 			type: 'spring',
 			stiffness: 200,

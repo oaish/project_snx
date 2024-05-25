@@ -11,55 +11,13 @@ import useAppStore from "@/states/appState";
 import {showToast} from "@/lib/helper";
 import {FaMoon, FaSun} from "react-icons/fa";
 import {styled} from "styled-components";
-import {motion} from "framer-motion";
-import {fadeConUp, fadeRight} from "@/styles/styledAnimations";
+import {AnimatePresence, motion} from "framer-motion";
+import {fadeRight} from "@/styles/styledAnimations";
+import AccountPopup from "@/components/_account/AccountPopup";
 
 
 export const MobileSidebar = ({setSidebarOpen}) => {
-    const router = useRouter();
-
-    const [userData, setUserData] = useState([]);
-    const toastRef = useRef(null);
-
     const {isDarkMode, setDarkMode} = useAppStore();
-
-    const fetchUserData = async () => {
-        try {
-            const email = document.cookie.split(';')[0].split('=')[1]
-            if (email === "false") {
-                throw new Error("User not found");
-            }
-
-            const options = {
-                method: "POST",
-                body: JSON.stringify({
-                    email: email
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            };
-
-            const res = await fetch("/api/get/user/profile", options);
-            const data = await res.json();
-            if (!data || data.length === 0) {
-                return;
-            }
-
-            setUserData(data)
-
-        } catch (error) {
-            router.push("/auth");
-            console.error("Error fetching user data:", error);
-            showToast("error", "Error", "Failed to fetch user data.", toastRef);
-        }
-    };
-
-    useEffect(() => {
-        fetchUserData().then();
-    }, []);
-
-
 
     const handleThemeToggle = () => {
         setDarkMode(!isDarkMode);
@@ -103,6 +61,17 @@ export const MobileSidebar = ({setSidebarOpen}) => {
 const MobileNavContainer = styled(motion.div)`
   display: none;
 
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color-black);
+    z-index: 999;
+  }
+
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -114,6 +83,7 @@ const MobileNavContainer = styled(motion.div)`
     z-index: 10000;
     background-color: #1d1d1d;
     height: Calc(100dvh - 4rem);
+    box-shadow: 5px 0 75px rgba(0, 128, 128, 0.3);
     border-right: 4px solid var(--primary-theme-color);
   }
 `;

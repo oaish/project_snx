@@ -19,6 +19,7 @@ export const AccountMicroBanners = ({user}) => {
 					<AccountDataField
 						type={item.label === "Password" ? "password" : "text"}
 						value={user[item.key]}
+						readOnly={true}
 					/>
 				</MicroBannerA> <>
 			</>
