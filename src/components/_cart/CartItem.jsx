@@ -3,12 +3,13 @@
 import { keyframes, styled } from "styled-components";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { FaTrashCan } from "react-icons/fa6";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export const CartItem = (props) => {
     const [quantity, setQuantity] = useState(1);
     const [showDetails, setShowDetails] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+    const detailsRef = useRef(null);
 
     const toggleDetails = () => {
         if (showDetails) {
@@ -30,9 +31,27 @@ export const CartItem = (props) => {
         }
     };
 
+    const handleClickOutside = (event) => {
+        if (detailsRef.current && !detailsRef.current.contains(event.target)) {
+            setShowDetails(false);
+        }
+    };
+
+    useEffect(() => {
+        if (showDetails) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [showDetails]);
+
     return (
         <>
-            <StyledCartItem>
+            <StyledCartItem onClick={toggleDetails}>
                 <ModelContainer>
                     <img src={props.img} alt="" />
                     <div>
@@ -47,7 +66,7 @@ export const CartItem = (props) => {
                 </ToggleContainer>
             </StyledCartItem>
             {(showDetails || isAnimating) && (
-                <DetailsContainer className={showDetails && !isAnimating ? "show" : "hide"}>
+                <DetailsContainer ref={detailsRef} className={showDetails && !isAnimating ? "show" : "hide"}>
                     <QuantityContainer>
                         <FaPlus size={30} onClick={() => setQuantity(quantity + 1)} />
                         <p>Quantity: {quantity}</p>
@@ -235,7 +254,7 @@ const PriceContainer = styled.div`
         &:hover {
             cursor: pointer;
             border: 2px solid var(--primary-text-color);
-            color: var(--primary-text-color);
+            color: var (--primary-text-color);
         }
     }
 
