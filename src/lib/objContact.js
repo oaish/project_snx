@@ -7,6 +7,12 @@ import {
 	TwitterIcon
 } from "../../public/images/icons/Icons";
 
+export const contactAboutContent = [
+  "SnX is a pioneering platform revolutionizing outfit customization through advanced 3D technology. With a vision to democratize fashion, SnX empowers individuals to express their unique style effortlessly.",
+  "Our intuitive interface offers endless customization options, from fabric selection to fit adjustments, ensuring every outfit reflects your personality. Committed to sustainability, SnX promotes eco-friendly practices and ethical sourcing. Join our community of fashion enthusiasts, designers, and trendsetters, and explore the limitless possibilities of our self-expression.",
+  "Experience the future of fashion with SnX – where creativity knows no bounds, and individuality reigns supreme. Welcome to a world where fashion meets innovation, only at SnX."
+];
+
 export const contactAccordionItems = [
 	{
 		key: "1",

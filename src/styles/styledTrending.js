@@ -5,6 +5,15 @@ export const STrendingContainer = styled(motion.div)`
     width: 92%;
     margin-left: 1.80rem;
 
+    @media (max-width: 768px) {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    @media (max-width: 480px) {
+        width: 100%;
+        margin-left: 0;
+    }
 `;
 
 export const STrendingCard = styled(motion.div)`
@@ -16,7 +25,6 @@ export const STrendingCard = styled(motion.div)`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-radius: 10px;
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     background-color: rgba(61, 61, 61, 0.4);
@@ -38,11 +46,32 @@ export const STrendingCard = styled(motion.div)`
         }
     }
 
+    @media (max-width: 1024px) {
+        width: 20rem;
+        margin-left: 0.8rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
     @media (max-width: 768px) {
-        width: 85%;
-        height: 75%;
+        width: 18rem;
+        margin-left: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
         > img {
-            transform: scale(0.75);
+            width: 90%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        width: 15rem;
+        margin-left: 0.2rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        > img {
+            width: 80%;
         }
     }
 `;
@@ -51,4 +80,12 @@ export const SCardImage = styled(motion.img)`
     width: auto;
     height: 100%;
     object-fit: cover;
+
+    @media (max-width: 768px) {
+        height: 90%;
+    }
+
+    @media (max-width: 480px) {
+        height: 80%;
+    }
 `;

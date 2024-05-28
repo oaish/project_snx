@@ -12,7 +12,7 @@ export const StyledFooter = styled.footer`
     color: var(--primary-theme-color);
 
     > nav {
-        margin-left: 64%;
+        margin-left: 50%;
         display: flex;
 
         > a {
@@ -28,10 +28,10 @@ export const StyledFooter = styled.footer`
             }
 
             > div {
-                padding: 0 0.5rem;
+                padding: 0 0.25rem;
 
                 > svg {
-                    scale: 1.5;
+                    scale: 1.0;
                 }
             }
         }
@@ -55,7 +55,7 @@ export const StyledFooter = styled.footer`
             margin-left: 0;
 
             > a > div > svg {
-                scale: 2;
+                scale: 1.0;
             }
         }
     }

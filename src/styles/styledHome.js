@@ -48,7 +48,7 @@ export const StyledTitle = styled(motion.h1)`
     justify-content: center;
     font-size: 1.875rem;
     font-weight: bold;
-    letter-spacing: -0.025em;
+    letter-spacing: 0.25rem;
     line-height: 1.2;
 
     @media (max-width: 768px) {

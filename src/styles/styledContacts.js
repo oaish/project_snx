@@ -242,58 +242,105 @@ export const ContactAboutText = styled(motion.p)`
 `;
 
 export const ContactAccordianContainer = styled(motion.div)`
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 94%;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 94%;
 
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-  
-  > div {
-    text-align: left;
+    @media (max-width: 768px) {
+        padding: 0;
+        width: 100%;
+        > div {
+            text-align: left;
+
+            > div {
+                width: 100%;
+                border-radius: 10px;
+                background-color: var(--primary-comp-bg);
+
+                > h2 {
+                    width: auto;
+                    background-color: var(--primary-comp-bg);
+
+                    > button {
+                        font-size: 1.10rem;
+                        display: flex;
+                        background-color: var(--primary-comp-bg);
+                        width: 100%;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+
+                        > div > span {
+                            font-size: 0.9rem;
+                            color: var(--primary-text-color);
+
+                        }
+
+                        > span {
+                            font-weight: bolder;
+                            margin-left: auto;
+                            color: var(--primary-theme-color);
+                        }
+                    }
+                }
+
+                > section > div {
+                    font-size: 0.9rem;
+                    color: var(--primary-text-color);
+                }
+
+                > section {
+                    color: var(--primary-color-black);
+                }
+            }
+        }
+    }
 
     > div {
-      width: 100%;
-      border-radius: 10px;
-      background-color: var(--primary-comp-bg);
+        text-align: left;
 
-      > h2 {
-        width: auto;
-        background-color: var(--primary-comp-bg);
+        > div {
+            width: 100%;
+            border-radius: 10px;
+            background-color: var(--primary-comp-bg);
 
-        > button {
-          font-size: 1.10rem;
-          display: flex;
-          background-color: var(--primary-comp-bg);
-          width: 100%;
+            > h2 {
+                width: auto;
+                background-color: var(--primary-comp-bg);
 
-          &:hover {
-            cursor: pointer;
-          }
+                > button {
+                    font-size: 1.10rem;
+                    display: flex;
+                    background-color: var(--primary-comp-bg);
+                    width: 100%;
 
-          > div > span {
-            color: var(--primary-text-color);
+                    &:hover {
+                        cursor: pointer;
+                    }
 
-          }
+                    > div > span {
+                        color: var(--primary-text-color);
 
-          > span {
-            margin-left: auto;
-            color: var(--primary-theme-color);
-          }
+                    }
+
+                    > span {
+                        margin-left: auto;
+                        color: var(--primary-theme-color);
+                    }
+                }
+            }
+
+            > section > div {
+                color: var(--primary-text-color);
+            }
+
+            > section {
+                color: var(--primary-color-black);
+            }
         }
-      }
-
-      > section > div {
-        color: var(--primary-text-color);
-      }
-
-      > section {
-        color: var(--primary-color-black);
-      }
     }
-  }
 `;
 
 export const ContactInputContainer = styled(motion.div)`

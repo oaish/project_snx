@@ -11,16 +11,15 @@ import {fadeLeft} from "@/styles/styledAnimations";
 import useMobileDetect from "@/components/UseMobileDetect";
 
 export default function Page() {
-    const {isMobile} = useMobileDetect()
+	const {isMobile} = useMobileDetect()
 
-    useEffect(() => {
-        console.log("Mobile: ", isMobile())
-    }, []);
+	useEffect(() => {
+		console.log("Mobile: ", isMobile())
+	}, []);
 
-
-    return (
-        <>
-            <StyledProgressBar/>
+	return (
+		<>
+			<StyledProgressBar/>
 			<PageContainer
 				variants={fadeLeft}
 				initial="initial"
@@ -29,11 +28,11 @@ export default function Page() {
 					paddingLeft: "2.5rem"
 				}}
 			>
-                <ContactAbout/>
-                <ContactLinks/>
-                <ContactFAQ/>
-                <ContactReview/>
-            </PageContainer>
-        </>
-    );
+				<ContactAbout/>
+				<ContactLinks/>
+				<ContactFAQ/>
+				<ContactReview/>
+			</PageContainer>
+		</>
+	);
 }

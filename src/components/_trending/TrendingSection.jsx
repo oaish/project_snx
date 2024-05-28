@@ -24,7 +24,7 @@ function TrendingSection({headerContent, headerIcon, carouselData}) {
 		<>
 			<HeaderType content={headerContent} icon={headerIcon} variants={fadeLeft} initial="initial" animate="show"/>
 			<STrendingContainer variants={fadeLeft} initial="initial" animate="show">
-				<Carousel numVisible={isMobile ? 1 : 3}  value={carouselData}
+				<Carousel circular autoplayInterval={2000} numVisible={isMobile ? 1 : 3}  value={carouselData}
 				          numScroll={1} itemTemplate={CarouselCard}/>
 			</STrendingContainer>
 		</>

@@ -202,13 +202,6 @@ export const contactDriver = () => {
 				},
 			},
 			{
-				element: '#faq',
-				popover: {
-					title: 'FAQ',
-					description: 'Find answers to frequently asked questions. Design shoes now and explore our FAQ section.'
-				},
-			},
-			{
 				element: '#contact-links',
 				popover: {
 					title: 'Contact Links',
@@ -216,10 +209,17 @@ export const contactDriver = () => {
 				},
 			},
 			{
-				element: '#recents',
+				element: '#faq',
 				popover: {
-					title: 'Recents',
-					description: 'View your recent creations and explore your design history. Check out your recent designs.'
+					title: 'FAQ',
+					description: 'Find answers to frequently asked questions. Design shoes now and explore our FAQ section.'
+				},
+			},
+			{
+				element: '#send-feedback',
+				popover: {
+					title: 'Send Feedback',
+					description: 'We value your feedback! Share your thoughts and help us improve our service.'
 				},
 			}
 		]

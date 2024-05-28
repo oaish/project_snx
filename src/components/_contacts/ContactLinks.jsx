@@ -7,15 +7,16 @@ import {
 	ContactTitle
 } from "@/styles/styledContacts";
 import {FaLink} from "react-icons/fa";
-import {fadeLeft, fadeUp, scaleUp} from "@/styles/styledAnimations";
+import {fadeLeft} from "@/styles/styledAnimations";
 import {StyledContainer, StyledFlexContainer, StyledParagraph, StyledTitle} from "@/styles/styledHome";
 import React from "react";
 import {contactLinks} from "@/lib/objContact";
 
-export default function ContactLinks() {
+export default function ContactLinks(props) {
 	return (
 		<>
-			<ContactSection>
+			<ContactSection
+			>
 				<StyledContainer>
 					<StyledFlexContainer
 						variants={fadeLeft}

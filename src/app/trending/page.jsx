@@ -1,10 +1,12 @@
 'use client'
 
-import TrendingTitle from "@/components/_trending/TrendingTitle";
 import TrendingGrid from "@/components/_trending/TrendingGrid";
 import {fadeLeft} from "@/styles/styledAnimations";
 import {PageContainer} from "@/styles/styledGlobal";
 import StyledProgressBar from "@/components/ui/StyledProgressBar";
+import {StyledTitle} from "@/styles/styledHome";
+import React from "react";
+import {FaFire} from "react-icons/fa";
 
 export default function Page() {
 	return (
@@ -15,10 +17,17 @@ export default function Page() {
 				initial="initial"
 				animate="show"
 				style={{
-					paddingLeft: "2.5rem"
+					paddingLeft: "1rem"
 				}}
 			>
-				<TrendingTitle/>
+				<StyledTitle
+					style={{
+						paddingTop: "2.5rem"
+					}}
+					variants={fadeLeft}
+				>
+					<FaFire/> Trending Outfits
+				</StyledTitle>
 				<TrendingGrid/>
 			</PageContainer>
 		</>

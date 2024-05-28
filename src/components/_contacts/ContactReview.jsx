@@ -7,7 +7,7 @@ import {fadeLeft} from "@/styles/styledAnimations";
 import HeaderSub from "@/components/ui/HeaderSub";
 import {StyledTitle} from "@/styles/styledHome";
 
-export default function ContactReview() {
+export default function ContactReview(props) {
 	const emailRegex = /^[a-zA-Z0-9_+.]+@[a-zA-Z]+\.+[a-z]{2,}$/;
 
 	const toastRef = useRef(null);
@@ -73,98 +73,100 @@ export default function ContactReview() {
 	}
 
 
-	return (<>
-		<StyledTitle>
-			<FaShareAlt/>
-			Share Feedback
-		</StyledTitle>
-		<StyledContactSection>
-			<ContactInputContainer
-				variants={fadeLeft}
-				initial="initial"
-				animate="show"
+	return (
+		<>
+			<StyledTitle
 			>
-				<HeaderSub
-					content={"First Name"}
-				/>
-				<HeaderSub
-					className="l-name"
-					content={"Last Name:"}
-				/>
-			</ContactInputContainer>
-			<ContactInputContainer
-				variants={fadeLeft}
-				initial="initial"
-				animate="show"
-			>
-				<ContactReviewInput
-					rows={1}
-					required={true}
-					ref={fNameRef}
-				/>
-				<ContactReviewInput
-					rows={1}
-					required={true}
-					ref={lNameRef}
-				/>
-			</ContactInputContainer>
-			<ContactInputContainer
-				variants={fadeLeft}
-				initial="initial"
-				animate="show"
-			>
-				<HeaderSub
-					content={"Email:"}
-				/>
-			</ContactInputContainer>
-			<ContactInputContainer
-				variants={fadeLeft}
-				initial="initial"
-				animate="show"
-			>
-				<ContactReviewInput
-					id="big-input"
-					rows={1}
-					required={true}
-					ref={emailRef}/>
-			</ContactInputContainer>
-			<ContactInputContainer
-				variants={fadeLeft}
-				initial="initial"
-				animate="show"
-			>
-				<HeaderSub
-					content={"Feedback:"}
-				/>
-			</ContactInputContainer>
-			<ContactInputContainer
-				variants={fadeLeft}
-				initial="initial"
-				animate="show"
-			>
-				<ContactReviewInput
-					id="big-input"
-					className="feedback-input"
-					required={true}
-					ref={userRef}/>
-			</ContactInputContainer>
-			<ContactButton
-				variants={fadeLeft}
-				initial="initial"
-				animate="show"
-				onClick={sendFeedback}
-			>
-				Submit Feedback
-			</ContactButton>
-			<ContactButton
-				variants={fadeLeft}
-				initial="initial"
-				animate="show"
-				onClick={resetHandler}
-			>
-				Reset
-			</ContactButton>
-			<Toast ref={toastRef}/>
-		</StyledContactSection>
-	</>)
+				<FaShareAlt/>
+				Share Feedback
+			</StyledTitle>
+			<StyledContactSection>
+				<ContactInputContainer
+					variants={fadeLeft}
+					initial="initial"
+					animate="show"
+				>
+					<HeaderSub
+						content={"First Name"}
+					/>
+					<HeaderSub
+						className="l-name"
+						content={"Last Name:"}
+					/>
+				</ContactInputContainer>
+				<ContactInputContainer
+					variants={fadeLeft}
+					initial="initial"
+					animate="show"
+				>
+					<ContactReviewInput
+						rows={1}
+						required={true}
+						ref={fNameRef}
+					/>
+					<ContactReviewInput
+						rows={1}
+						required={true}
+						ref={lNameRef}
+					/>
+				</ContactInputContainer>
+				<ContactInputContainer
+					variants={fadeLeft}
+					initial="initial"
+					animate="show"
+				>
+					<HeaderSub
+						content={"Email:"}
+					/>
+				</ContactInputContainer>
+				<ContactInputContainer
+					variants={fadeLeft}
+					initial="initial"
+					animate="show"
+				>
+					<ContactReviewInput
+						id="big-input"
+						rows={1}
+						required={true}
+						ref={emailRef}/>
+				</ContactInputContainer>
+				<ContactInputContainer
+					variants={fadeLeft}
+					initial="initial"
+					animate="show"
+				>
+					<HeaderSub
+						content={"Feedback:"}
+					/>
+				</ContactInputContainer>
+				<ContactInputContainer
+					variants={fadeLeft}
+					initial="initial"
+					animate="show"
+				>
+					<ContactReviewInput
+						id="big-input"
+						className="feedback-input"
+						required={true}
+						ref={userRef}/>
+				</ContactInputContainer>
+				<ContactButton
+					variants={fadeLeft}
+					initial="initial"
+					animate="show"
+					onClick={sendFeedback}
+				>
+					Submit Feedback
+				</ContactButton>
+				<ContactButton
+					variants={fadeLeft}
+					initial="initial"
+					animate="show"
+					onClick={resetHandler}
+				>
+					Reset
+				</ContactButton>
+				<Toast ref={toastRef}/>
+			</StyledContactSection>
+		</>)
 }

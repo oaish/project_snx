@@ -1,15 +1,16 @@
 import React from "react";
 import {ContactAccordianContainer, ContactSection} from "@/styles/styledContacts";
 import {StyledContainer, StyledFlexContainer, StyledTitle} from "@/styles/styledHome";
-import {fadeDown, fadeLeft, fadeUp, scaleUp} from "@/styles/styledAnimations";
+import {fadeLeft} from "@/styles/styledAnimations";
 import {FaQuestionCircle} from "react-icons/fa";
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import {contactAccordionItems} from "@/lib/objContact";
 
-export default function ContactFAQ() {
+export default function ContactFAQ(props) {
 	return (
 		<>
-			<ContactSection>
+			<ContactSection
+			>
 				<StyledContainer>
 					<StyledFlexContainer
 						variants={fadeLeft}
@@ -17,10 +18,8 @@ export default function ContactFAQ() {
 						animate="show"
 					>
 						<StyledTitle
+							id="faq-title"
 							variants={fadeLeft}
-							style={{
-								marginLeft: "-7rem"
-							}}
 						>
 							<FaQuestionCircle/> FAQ
 						</StyledTitle>
