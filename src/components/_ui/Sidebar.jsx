@@ -14,7 +14,6 @@ import {showToast} from "@/lib/helper";
 import {FaMoon, FaSun} from "react-icons/fa";
 import {AnimatePresence} from "framer-motion";
 
-
 const Sidebar = () => {
 	const pathname = usePathname();
 	const router = useRouter();
