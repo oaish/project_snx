@@ -4,7 +4,6 @@ import React, {useEffect, useRef, useState} from "react";
 import * as NLS from "../../styles/styledNav";
 import {StyledLink, StyledNotLink} from "@/styles/styledNav";
 import {NavLinksBottom, NavLinksTop, NavLinksTopMiddle} from "@/lib/objNav";
-import "../../styles/nav.css";
 import "driver.js/dist/driver.css";
 import {accountDriver, createDesignerDriver, createDriver, navDriver} from "@/lib/driver";
 import {usePathname, useRouter} from "next/navigation";
@@ -110,7 +109,7 @@ const Sidebar = () => {
 					<NLS.NavSubLeft className="navLinksTop">
 						<NLS.NavStyledUl>
 							{NavLinksTop.map((navLink, index) => (
-								<NLS.NavStyledLi key={index}>
+								<NLS.NavStyledLi whileHover={{scale: 0.9}} whileTap={{scale: 0.8}} key={index}>
 									<StyledLink id="project-link" href={navLink.path}>
 										<NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
 									</StyledLink>
@@ -124,20 +123,21 @@ const Sidebar = () => {
 					<NLS.NavSubRight>
 						<NLS.NavStyledUl>
 							{NavLinksTopMiddle.map((navLink, index) => (
-								<NLS.NavStyledLi key={index} className="middle-links">
+								<NLS.NavStyledLi whileHover={{scale: 0.9}} whileTap={{scale: 0.8}} key={index}
+								                 className="middle-links">
 									<StyledLink id={navLink.id} href={navLink.path}>
 										<NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
 									</StyledLink>
 								</NLS.NavStyledLi>
 							))}
-							<NLS.NavStyledLi className="middle-links">
+							<NLS.NavStyledLi whileHover={{scale: 0.9}} whileTap={{scale: 0.8}} className="middle-links">
 								<StyledNotLink id="theme-link" onClick={() => handleThemeToggle()}>
 									<NLS.NavStyledIcon onClick={() => setIsDarkTheme(!isDarkTheme)}>
 										{isDarkTheme ? <FaSun/> : <FaMoon/>}
 									</NLS.NavStyledIcon>
 								</StyledNotLink>
 							</NLS.NavStyledLi>
-							<NLS.NavStyledLi className="middle-links">
+							<NLS.NavStyledLi whileHover={{scale: 0.9}} whileTap={{scale: 0.8}} className="middle-links">
 								<StyledNotLink id="help-button" onClick={() => handleDriverStart()}>
 									<NLS.NavStyledIcon>
 										<BiHelpCircle/>
@@ -152,7 +152,7 @@ const Sidebar = () => {
 					<NLS.NavSubLeft className="navLinksBottom">
 						<NLS.NavStyledUl>
 							{NavLinksBottom.map((navLink, index) => (
-								<NLS.NavStyledLi key={index}>
+								<NLS.NavStyledLi whileHover={{scale: 0.9}} whileTap={{scale: 0.8}} key={index}>
 									<StyledNotLink id="account-link" onClick={openProfile}>
 										<NLS.NavStyledIcon>{navLink.icon}</NLS.NavStyledIcon>
 									</StyledNotLink>

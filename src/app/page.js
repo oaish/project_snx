@@ -4,7 +4,7 @@ import React from "react";
 import {motion} from "framer-motion";
 import {fadeLeft} from "@/styles/styledAnimations";
 import HomeTitle from "@/components/home/HomeTitle";
-import StyledProgressBar from "@/components/ui/StyledProgressBar";
+import StyledProgressBar from "@/components/_ui/StyledProgressBar";
 import HomeWorks from "@/components/home/HomeWorks";
 import HomeCategories from "@/components/home/HomeCategories";
 import HomeReviews from "@/components/home/HomeReviews";

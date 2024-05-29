@@ -18,22 +18,22 @@ export const PageContainer = styled(motion.div)`
 `;
 
 export const CreatePageContainer = styled(motion.div)`
-  background-color: var(--primary-color-black);
-  display: flex;
-  margin-left: 2rem;
-  justify-content: center;
-  align-items: center;
-  width: Calc(100vw - 5rem);
-  height: 100vh;
-  @media (max-width: 768px) {
-    margin-left: 0;
-    width: 100vw;
-    height: Calc(100vh - 5rem);
-    justify-content: flex-start;
-    flex-direction: column;
-    margin-top: 5rem;
-    padding-top: 1.5rem;
-  }
+    background-color: var(--primary-color-black);
+    display: flex;
+    margin-left: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: Calc(100vw - 5rem);
+    height: 100vh;
+    @media (max-width: 768px) {
+        margin-left: 0;
+        width: 100vw;
+        height: Calc(100vh - 5rem);
+        justify-content: flex-start;
+        flex-direction: column;
+        margin-top: 5rem;
+        padding-top: 1.5rem;
+    }
 `;
 
 export const StyledHead = styled(motion.p)`

@@ -4,7 +4,7 @@ import {useRef} from "react";
 import {Toast} from "primereact/toast";
 import {showToast} from "@/lib/helper";
 import {fadeLeft} from "@/styles/styledAnimations";
-import HeaderSub from "@/components/ui/HeaderSub";
+import HeaderSub from "@/components/_ui/HeaderSub";
 import {StyledTitle} from "@/styles/styledHome";
 
 export default function ContactReview(props) {

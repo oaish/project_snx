@@ -25,6 +25,11 @@ export const StyledFooter = styled.footer`
             &:hover {
                 color: var(--primary-text-color);
                 transition: 0.25s all linear;
+                scale: 0.9;
+            }
+
+            &:active {
+                scale: 0.8;
             }
 
             > div {

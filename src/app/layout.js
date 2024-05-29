@@ -1,7 +1,7 @@
 import {Inter} from 'next/font/google'
 import './globals.css'
 import React from "react";
-import IsNavFooter from "@/components/ui/IsNavFooter";
+import IsNavFooter from "@/components/_ui/IsNavFooter";
 
 const inter = Inter({subsets: ['latin']})
 

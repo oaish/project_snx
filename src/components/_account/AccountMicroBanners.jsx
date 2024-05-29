@@ -1,5 +1,5 @@
 import {AccountDataField, MicroBanner, MicroBannerA} from "@/styles/styledAccount";
-import TextHead from "@/components/ui/TextHead";
+import TextHead from "@/components/_ui/TextHead";
 import React from "react";
 import {motion} from "framer-motion";
 

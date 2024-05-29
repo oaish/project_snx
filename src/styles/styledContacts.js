@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import { InputTextarea } from 'primereact/inputtextarea';
+import {InputTextarea} from 'primereact/inputtextarea';
 import {motion} from "framer-motion";
 
 export const ContactSection = styled.section`
     width: 100%;
-	margin: 2rem 0;
-	
+    margin: 2rem 0;
+
     @media (min-width: 768px) {
         padding: 24px 0;
     }
-	
+
     @media (max-width: 768px) {
-    	margin-left: 1rem;
+        margin-left: 1rem;
     }
 
     @media (min-width: 1024px) {

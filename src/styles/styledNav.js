@@ -67,7 +67,7 @@ export const NavStyledUl = styled.ul`
   flex-direction: column;
 `;
 
-export const NavStyledLi = styled.li`
+export const NavStyledLi = styled(motion.li)`
   width: 100%;
   font-size: 1.25rem;
   padding: 1rem;
@@ -76,22 +76,22 @@ export const NavStyledLi = styled.li`
 `;
 
 export const StyledLink = styled(Link)`
-  color: var(--primary-theme-color);
-  width: 100%;
-  display: flex;
-  transition: 0.25s all linear;
+    color: var(--primary-theme-color);
+    width: 100%;
+    display: flex;
+    transition: 0.25s all linear;
 
-  > p > svg {
-    width: 30px;
-  }
-
-  &:hover {
-    color: var(--primary-text-color);
-
-    > p {
-      transition: 0s all linear;
+    > p > svg {
+        width: 30px;
     }
-  }
+
+    &:hover {
+        color: var(--primary-text-color);
+
+        > p {
+            transition: 0s all linear;
+        }
+    }
 `;
 
 export const NavStyledIcon = styled(motion.p)`

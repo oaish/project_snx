@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import {Carousel} from 'primereact/carousel';
 import {STrendingContainer} from "@/styles/styledTrending";
@@ -20,12 +22,23 @@ function CarouselCard(props) {
 
 function TrendingSection({headerContent, headerIcon, carouselData}) {
 	const isMobile = useMediaQuery({maxWidth: 768});
+
 	return (
 		<>
 			<HeaderType content={headerContent} icon={headerIcon} variants={fadeLeft} initial="initial" animate="show"/>
-			<STrendingContainer variants={fadeLeft} initial="initial" animate="show">
-				<Carousel circular autoplayInterval={2000} numVisible={isMobile ? 1 : 3}  value={carouselData}
-				          numScroll={1} itemTemplate={CarouselCard}/>
+			<STrendingContainer
+				variants={fadeLeft}
+				initial="initial"
+				animate="show"
+			>
+				<Carousel
+					circular
+					autoplayInterval={2000}
+					numVisible={isMobile ? 1 : 3}
+					value={carouselData}
+					numScroll={1}
+					itemTemplate={CarouselCard}
+				/>
 			</STrendingContainer>
 		</>
 	);

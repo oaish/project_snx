@@ -3,7 +3,7 @@ import {styled} from "styled-components";
 import React, {useEffect} from "react";
 import ShirtIcon from "@/lib/objNav";
 import {FaUserEdit} from "react-icons/fa";
-import {MobileSidebar} from "@/components/ui/MobileSidebar";
+import {MobileSidebar} from "@/components/_ui/MobileSidebar";
 import {usePathname, useRouter} from "next/navigation";
 import AccountPopup from "@/components/_account/AccountPopup";
 import useAppStore from "@/states/appState";

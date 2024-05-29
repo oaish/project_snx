@@ -50,7 +50,7 @@ body {
 
 #faq-title {
     @media (min-width: 769px) {
-        /*margin-left: -7rem;*/
+        margin-left: -7rem;
     }
 }
 

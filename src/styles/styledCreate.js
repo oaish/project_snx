@@ -4,23 +4,23 @@ import {Canvas} from "@react-three/fiber";
 import {motion} from "framer-motion";
 
 export const CardGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  position: relative;
-  margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    position: relative;
+    margin-bottom: 1rem;
 
-  > .recent-loader {
-    width: 100%;
-    height: 100%;
-    grid-column: span 2;
-    grid-row: span 2;
-    background: crimson;
-  }
+    > .recent-loader {
+        width: 100%;
+        height: 100%;
+        grid-column: span 2;
+        grid-row: span 2;
+        background: crimson;
+    }
 
-  @media (max-width: 768px) {
-    grid-template-rows: 3.75rem 1fr 1fr;
-  }
+    @media (max-width: 768px) {
+        grid-template-rows: 3.75rem 1fr 1fr;
+    }
 `;
 
 export const StyledBlock = styled(motion.div)`

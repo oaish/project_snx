@@ -1,14 +1,14 @@
 "use client"
 
 import React, {useEffect} from 'react'
-import Nav from "@/components/ui/Sidebar";
+import Nav from "@/components/_ui/Sidebar";
 import {usePathname} from "next/navigation";
-import Footer from "@/components/ui/Footer";
+import Footer from "@/components/_ui/Footer";
 import {NextUIProvider} from "@nextui-org/react";
 import useAppStore from "@/states/appState";
-import Sidebar from "@/components/ui/Sidebar";
+import Sidebar from "@/components/_ui/Sidebar";
 import useMobileDetect from "@/components/UseMobileDetect";
-import MobileNavBar from "@/components/ui/MobileNavBar";
+import MobileNavBar from "@/components/_ui/MobileNavBar";
 
 const IsNavFooter = ({children}) => {
 	const pathname = usePathname();

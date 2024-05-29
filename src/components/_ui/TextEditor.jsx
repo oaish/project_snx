@@ -3,7 +3,7 @@ import '@/styles/snow.css';
 import * as htmlToImage from 'html-to-image';
 import useStore from "@/states/modelState"
 import {MdAddBox} from "react-icons/md";
-import ReactQuill from "@/components/ui/ReactQuill";
+import ReactQuill from "@/components/_ui/ReactQuill";
 
 
 export default function TextEditor({setDecalPath, setIsPanelOpen}) {

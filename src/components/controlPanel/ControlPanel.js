@@ -8,7 +8,7 @@ import DecalManager from "@/components/decalManager/DecalManager";
 import Icon from "@/components/icon/Icon";
 import bgData from "@/constants/bg.json"
 import bgSampleImages from "@/constants/bgSampleImages.json"
-import TextEditor from "@/components/ui/TextEditor";
+import TextEditor from "@/components/_ui/TextEditor";
 import {SavePopup, SavePopupFooter} from "@/styles/styledCreate";
 import {Dialog} from "primereact/dialog";
 import {Button} from "primereact/button";
