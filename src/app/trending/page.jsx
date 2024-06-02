@@ -22,7 +22,7 @@ export default function Page() {
 			>
 				<StyledTitle
 					style={{
-						paddingTop: "2.5rem"
+						paddingTop: "2.5rem",
 					}}
 					variants={fadeLeft}
 				>

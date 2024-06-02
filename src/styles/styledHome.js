@@ -54,6 +54,8 @@ export const StyledTitle = styled(motion.h1)`
     @media (max-width: 768px) {
         justify-content: center;
         flex-direction: column;
+        margin-left: 1rem;
+        margin-top: -5rem;
         > svg {
             width: 5rem;
             height: 5rem;
@@ -67,7 +69,6 @@ export const StyledTitle = styled(motion.h1)`
         > svg {
             height: 5rem;
             width: 5rem;
-            margin-right: 2rem;
         }
     }
 `;

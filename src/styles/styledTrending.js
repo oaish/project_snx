@@ -21,8 +21,12 @@ export const STrendingCard = styled(motion.div)`
     padding: 1rem;
     color: var(--primary-text-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
 
     > img {
+        object-fit: cover;
+        width: 75%;
+        height: 300px;
         transition: transform 0.3s ease;
     }
 
@@ -32,6 +36,7 @@ export const STrendingCard = styled(motion.div)`
         box-shadow: 0 10px 20px var(--primary-theme-color);
 
         > img {
+            z-index: 100;
             transform: scale(1.25);
         }
     }
@@ -67,8 +72,6 @@ export const STrendingCard = styled(motion.div)`
 `;
 
 export const SCardImage = styled(motion.img)`
-    width: auto;
-    height: 100%;
     object-fit: cover;
 
     @media (max-width: 768px) {
