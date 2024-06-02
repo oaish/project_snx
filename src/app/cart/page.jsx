@@ -7,6 +7,7 @@ import {useState} from "react";
 import {fadeLeft} from "@/styles/styledAnimations";
 import {motion} from "framer-motion";
 import {FaBoxOpen} from "react-icons/fa";
+import {Button} from "@/components/_ui/Button";
 
 export default function Page() {
 	const [cart, setCart] = useState(ObjCart.map(item => ({...item, quantity: 1})));
@@ -29,6 +30,10 @@ export default function Page() {
 		);
 		setCart(newCart);
 	};
+
+	const checkout = () => {
+		console.log("Checked Out")
+	}
 
 	return (
 		<>
@@ -65,9 +70,7 @@ export default function Page() {
 							<h3>Total: <span>${calculateTotalPrice(cart).toFixed(2)}</span></h3>
 						</div>
 						<div>
-							<CheckoutButton>
-								Checkout
-							</CheckoutButton>
+							<Button onClick={checkout} text={"Checkout"}/>
 						</div>
 					</div>
 				</ItemsContainer>
@@ -75,6 +78,7 @@ export default function Page() {
 		</>
 	);
 }
+
 
 const CartPageContainer = styled(motion.div)`
     background-color: var(--primary-color-black);
@@ -170,26 +174,27 @@ const ItemsContainer = styled(motion.div)`
     }
 `
 
-const CheckoutButton = styled.div`
-    margin: 1rem 0 0.5rem 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    color: var(--primary-comp-bg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: var(--primary-theme-color);
-    transition: 0.25s all linear;
-    font-size: 1.2rem;
-    font-weight: bold;
+// const CheckoutButton = styled.div`
+//     margin: 1rem 0 0.5rem 0;
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 0.5rem;
+//     color: var(--primary-comp-bg);
+//     border: 1px solid rgba(255, 255, 255, 0.2);
+//     background-color: var(--primary-theme-color);
+//     transition: 0.25s all linear;
+//     font-size: 1.2rem;
+//     font-weight: bold;
+//
+//     &:hover {
+//         background-color: var(--primary-comp-bg);
+//         color: var(--primary-theme-color);
+//         cursor: pointer;
+//     }
+// `
 
-    &:hover {
-        background-color: var(--primary-comp-bg);
-        color: var(--primary-theme-color);
-        cursor: pointer;
-    }
-`
 const EmptyCart = styled.div`
     height: 35rem;
     color: var(--primary-text-color);

@@ -4,6 +4,8 @@ import {styled} from "styled-components";
 import {useEffect, useRef, useState} from "react";
 import {FaX} from "react-icons/fa6";
 import {FaMinus, FaPlus} from "react-icons/fa";
+import {QuantityButton} from "@/components/_ui/QuantityButton";
+
 
 export const CartItem = (props) => {
 	const dec = useRef(null);
@@ -60,15 +62,11 @@ export const CartItem = (props) => {
 						</PriceContainer>
 						<QuantityContainer>
 							<div>
-								<div onClick={incrementQuantity} className="button">
-									<FaPlus/>
-								</div>
+								<QuantityButton onClick={incrementQuantity} text={<FaPlus/>}/>
 								<div>
 									{quantity}
 								</div>
-								<div onClick={decrementQuantity} className="button dec" ref={dec}>
-									<FaMinus/>
-								</div>
+								<QuantityButton onClick={decrementQuantity} text={<FaMinus/>}/>
 							</div>
 						</QuantityContainer>
 					</BottomContainer>
@@ -181,12 +179,10 @@ const QuantityContainer = styled.div`
     align-items: center;
     border-radius: 8px;
     margin-right: -9rem;
-    box-shadow: 0 0 .4rem rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--primary-text-color);
 
     > div {
         display: flex;
+        height: 2rem;
         align-items: center;
         background-color: var(--primary-color-black);
         border-radius: 8px;
@@ -199,20 +195,6 @@ const QuantityContainer = styled.div`
         justify-content: center;
         height: 2rem;
         width: 2rem;
-    }
-
-    > div > .button {
-        &:hover {
-            cursor: pointer;
-        }
-
-        &:active {
-            opacity: 0.7;
-        }
-    }
-
-    .dec {
-        opacity: 0.5;
     }
 
     @media (max-width: 768px) {

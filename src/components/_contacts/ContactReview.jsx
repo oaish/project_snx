@@ -168,5 +168,6 @@ export default function ContactReview(props) {
 				</ContactButton>
 				<Toast ref={toastRef}/>
 			</StyledContactSection>
-		</>)
+		</>
+	)
 }
