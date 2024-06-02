@@ -4,16 +4,6 @@ import {motion} from "framer-motion";
 export const STrendingContainer = styled(motion.div)`
     width: 92%;
     margin-left: 1.80rem;
-
-    @media (max-width: 768px) {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    @media (max-width: 480px) {
-        width: 100%;
-        margin-left: 0;
-    }
 `;
 
 export const STrendingCard = styled(motion.div)`
@@ -66,7 +56,7 @@ export const STrendingCard = styled(motion.div)`
 
     @media (max-width: 480px) {
         width: 15rem;
-        margin-left: 0.2rem;
+        margin-left: 2rem;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
 

@@ -8,6 +8,24 @@ import HeaderType from "@/components/_trending/HeaderType";
 import TrendingCard from "@/components/_trending/TrendingCard";
 import {useMediaQuery} from "react-responsive";
 
+const responsiveOptions = [
+	{
+		breakpoint: '1024px',
+		numVisible: 3,
+		numScroll: 3
+	},
+	{
+		breakpoint: '768px',
+		numVisible: 2,
+		numScroll: 2
+	},
+	{
+		breakpoint: '560px',
+		numVisible: 1,
+		numScroll: 1
+	}
+];
+
 function CarouselCard(props) {
 	return (
 		<TrendingCard
@@ -38,6 +56,7 @@ function TrendingSection({headerContent, headerIcon, carouselData}) {
 					value={carouselData}
 					numScroll={1}
 					itemTemplate={CarouselCard}
+					responsiveOptions={responsiveOptions}
 				/>
 			</STrendingContainer>
 		</>
