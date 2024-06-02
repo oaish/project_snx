@@ -2,9 +2,9 @@
 
 import {styled} from "styled-components";
 import {useEffect, useRef, useState} from "react";
-import {FaX} from "react-icons/fa6";
 import {FaMinus, FaPlus} from "react-icons/fa";
 import {QuantityButton} from "@/components/_ui/QuantityButton";
+import {FaX} from "react-icons/fa6";
 
 
 export const CartItem = (props) => {
@@ -53,7 +53,7 @@ export const CartItem = (props) => {
 							<p className="type">Type: {props.type}</p>
 						</div>
 						<RemoveContainer onClick={() => props.removeItem(props.id)}>
-							<FaX/>
+							<QuantityButton text={<FaX/>}/>
 						</RemoveContainer>
 					</TopContainer>
 					<BottomContainer>
