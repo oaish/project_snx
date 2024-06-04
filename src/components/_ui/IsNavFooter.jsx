@@ -1,7 +1,6 @@
 "use client"
 
 import React, {useEffect} from 'react'
-import Nav from "@/components/_ui/Sidebar";
 import {usePathname} from "next/navigation";
 import Footer from "@/components/_ui/Footer";
 import {NextUIProvider} from "@nextui-org/react";
