@@ -241,6 +241,7 @@ const ItemsContainer = styled(motion.div)`
       margin-left: 1rem;
       height: 1px;
       width: 100%;
+      opacity: 0.2;
       background-color: var(--primary-text-color);
 
       @media (max-width: 768px) {

@@ -66,7 +66,7 @@ export const CartItem = (props) => {
                                 <div>
                                     {quantity}
                                 </div>
-                                <QuantityButton onClick={decrementQuantity} text={<FaMinus/>}/>
+                                <QuantityButton onClick={decrementQuantity} quantity={quantity} text={<FaMinus/>}/>
                             </div>
                         </QuantityContainer>
                     </BottomContainer>

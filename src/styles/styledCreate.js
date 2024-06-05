@@ -33,7 +33,8 @@ export const StyledBlock = styled(motion.div)`
   height: 200px;
   transition: all 0.2s ease;
   cursor: pointer;
-
+  box-shadow: 0 0 0.5rem rgba(0,0,0,0.5);
+  
   &:active {
     transform: scale(0.95);
   }
