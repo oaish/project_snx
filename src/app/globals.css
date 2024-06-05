@@ -48,12 +48,6 @@ body {
     background-color: var(--primary-color-black);
 }
 
-#faq-title {
-    @media (min-width: 769px) {
-        margin-left: -7rem;
-    }
-}
-
 .container {
     display: flex;
     height: 100%;
@@ -276,6 +270,13 @@ button::-moz-focus-inner,
     .enter {
         top: -50% !important;
         height: 60px !important;
+    }
+
+    .p-toast.p-component {
+        right: 0 !important;
+        left: 50% !important;
+        translate: -50% !important;
+        top: 5rem !important;
     }
 }
 
