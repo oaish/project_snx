@@ -327,13 +327,11 @@ const Viewer = ({mode, DD, modelUrl}) => {
             rejectClass: 'p-button-sm',
             acceptClass: 'p-button-outlined p-button-sm',
             accept: async () => {
-                setCapture(true)
                 if (await addModelToCart()) {
                     showToast("success", "Added to Cart", "Model added to cart successfully", toastRef)
                 } else {
                     showToast("danger", "Model not saved", "Save your model before adding to cart", toastRef)
                 }
-                setCapture(false)
             },
             reject: () => console.log()
         });
@@ -348,13 +346,14 @@ const Viewer = ({mode, DD, modelUrl}) => {
 
         const body = {
             email: user?.email,
-            img: snapshot,
             name: saved.name,
+            img: snapshot,
             type: isShirt ? "shirt" : isPant ? "pant" : isShoe ? "shoe" : "cap",
-            price: getCalculatedPrice()
+            price: getCalculatedPrice(),
+            quantity: 1
         }
 
-        const res = await fetch('/api/post/add-to-cart', {
+        const res = await fetch('/api/post/cart/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

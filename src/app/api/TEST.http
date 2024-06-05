@@ -1,7 +1,1 @@
-POST http://localhost:3000/api/post/user/login/
-Content-Type: application/json
-
-{
-  "user_email": "abcd",
-  "user_password": "{ &gt: '' }"
-}
+GET http://localhost:3000/api/get/cart?email=o@gm.com

@@ -37,14 +37,13 @@ const StyledButton = styled.div`
     padding: 0.5rem;
     color: var(--primary-text-color);
     border-radius: 8px;
-    background-color: var(--primary-color-black);
     transition: 0.25s all linear;
     font-size: 1.2rem;
     font-weight: bold;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-
+	
     .ripple {
         position: absolute;
         border-radius: 50%;
