@@ -59,7 +59,7 @@ export const StyledTitle = styled(motion.h1)`
         > svg {
             width: 5rem;
             height: 5rem;
-            margin-right: 0;
+            margin-right: 2rem;
             margin-bottom: 1rem;
         }
     }
@@ -67,6 +67,7 @@ export const StyledTitle = styled(motion.h1)`
     @media (min-width: 1024px) {
         font-size: 4rem;
         > svg {
+            margin-right: 2rem;
             height: 5rem;
             width: 5rem;
         }
